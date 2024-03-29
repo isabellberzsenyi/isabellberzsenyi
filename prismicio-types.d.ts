@@ -146,111 +146,47 @@ export type HomePageDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Project → Project Topics*
- */
-export interface ProjectDocumentDataProjectTopicsItem {
-  /**
-   * Topic field in *Project → Project Topics*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_topics[].topic
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  topic: prismic.RichTextField;
-}
-
-/**
- * Item in *Project → Project Content*
- */
-export interface ProjectDocumentDataProjectContentItem {
-  /**
-   * Project Image field in *Project → Project Content*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_content[].project_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  project_image: prismic.ImageField<never>;
-
-  /**
-   * Project Subsection field in *Project → Project Content*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: Subsection
-   * - **API ID Path**: project.project_content[].project_subsection
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  project_subsection: prismic.ContentRelationshipField<"project_subsection">;
-}
-
-/**
  * Content for Project documents
  */
 interface ProjectDocumentData {
   /**
    * Project Title field in *Project*
    *
-   * - **Field Type**: Title
-   * - **Placeholder**: Project
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
    * - **API ID Path**: project.project_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  project_title: prismic.TitleField;
+  project_title: prismic.KeyTextField;
 
   /**
    * Project Date field in *Project*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Date
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
    * - **API ID Path**: project.project_date
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#date
    */
-  project_date: prismic.RichTextField;
+  project_date: prismic.DateField;
 
   /**
-   * Project Topics field in *Project*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_topics[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  project_topics: prismic.GroupField<
-    Simplify<ProjectDocumentDataProjectTopicsItem>
-  >;
-
-  /**
-   * Project Overview field in *Project*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Overview
-   * - **API ID Path**: project.project_overview
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  project_overview: prismic.RichTextField;
-
-  /**
-   * Project Preview Image field in *Project*
+   * Project Preview Picture field in *Project*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_preview_image
+   * - **API ID Path**: project.project_preview_picture
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  project_preview_image: prismic.ImageField<never>;
+  project_preview_picture: prismic.ImageField<never>;
 
   /**
    * Code Link field in *Project*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: Code Link
+   * - **Placeholder**: *None*
    * - **API ID Path**: project.code_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
@@ -258,50 +194,15 @@ interface ProjectDocumentData {
   code_link: prismic.LinkField;
 
   /**
-   * Demo Link field in *Project*
+   * Project Preview Text field in *Project*
    *
-   * - **Field Type**: Link
-   * - **Placeholder**: Demo Link
-   * - **API ID Path**: project.demo_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  demo_link: prismic.LinkField;
-
-  /**
-   * Background Description field in *Project*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Background Description
-   * - **API ID Path**: project.background_description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  background_description: prismic.RichTextField;
-
-  /**
-   * Technical Takeaway Description field in *Project*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Takeaway Description
-   * - **API ID Path**: project.technical_takeaway_description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  technical_takeaway_description: prismic.RichTextField;
-
-  /**
-   * Project Content field in *Project*
-   *
-   * - **Field Type**: Group
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_content[]
+   * - **API ID Path**: project.project_preview_text
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  project_content: prismic.GroupField<
-    Simplify<ProjectDocumentDataProjectContentItem>
-  >;
+  project_preview_text: prismic.KeyTextField;
 }
 
 /**
@@ -342,8 +243,6 @@ declare module "@prismicio/client" {
       HomePageDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
-      ProjectDocumentDataProjectTopicsItem,
-      ProjectDocumentDataProjectContentItem,
       AllDocumentTypes,
     };
   }

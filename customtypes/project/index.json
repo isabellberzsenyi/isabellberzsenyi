@@ -2,6 +2,8 @@
   "id": "project",
   "label": "Project",
   "repeatable": true,
+  "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "uid": {
@@ -12,113 +14,42 @@
         }
       },
       "project_title": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
-          "single": "heading1,heading2,heading3,heading4,heading5,heading6",
           "label": "Project Title",
-          "placeholder": "Project"
+          "placeholder": ""
         }
       },
       "project_date": {
-        "type": "StructuredText",
+        "type": "Date",
         "config": {
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
           "label": "Project Date",
-          "placeholder": "Date"
+          "placeholder": ""
         }
       },
-      "project_topics": {
-        "type": "Group",
-        "config": {
-          "fields": {
-            "topic": {
-              "type": "StructuredText",
-              "config": {
-                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-                "label": "Topic"
-              }
-            }
-          },
-          "label": "Project Topics"
-        }
-      },
-      "project_overview": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label": "Project Overview",
-          "placeholder": "Overview"
-        }
-      },
-      "project_preview_image": {
+      "project_preview_picture": {
         "type": "Image",
         "config": {
+          "label": "Project Preview Picture",
           "constraint": {},
-          "thumbnails": [],
-          "label": "Project Preview Image"
+          "thumbnails": []
         }
       },
       "code_link": {
         "type": "Link",
         "config": {
-          "allowTargetBlank": true,
           "label": "Code Link",
-          "placeholder": "Code Link",
+          "placeholder": "",
           "select": null
         }
       },
-      "demo_link": {
-        "type": "Link",
+      "project_preview_text": {
+        "type": "Text",
         "config": {
-          "allowTargetBlank": true,
-          "label": "Demo Link",
-          "placeholder": "Demo Link",
-          "select": null
-        }
-      },
-      "background_description": {
-        "type": "StructuredText",
-        "config": {
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label": "Background Description",
-          "placeholder": "Background Description"
-        }
-      },
-      "technical_takeaway_description": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label": "Technical Takeaway Description",
-          "placeholder": "Takeaway Description"
-        }
-      },
-      "project_content": {
-        "type": "Group",
-        "config": {
-          "fields": {
-            "project_image": {
-              "type": "Image",
-              "config": {
-                "constraint": {},
-                "thumbnails": [],
-                "label": "Project Image"
-              }
-            },
-            "project_subsection": {
-              "type": "Link",
-              "config": {
-                "select": "document",
-                "customtypes": ["project_subsection"],
-                "label": "Project Subsection",
-                "placeholder": "Subsection"
-              }
-            }
-          },
-          "label": "Project Content"
+          "label": "Project Preview Text",
+          "placeholder": ""
         }
       }
     }
-  },
-  "status": true,
-  "format": "custom"
+  }
 }
