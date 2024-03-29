@@ -1,0 +1,28 @@
+{
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "navigation_links": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "navigation_link": {
+              "type": "Link",
+              "config": {
+                "select": "document",
+                "customtypes": ["navigation_link"],
+                "label": "Navigation Link",
+                "placeholder": "Nav Link"
+              }
+            }
+          },
+          "label": "Navigation Links"
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "custom"
+}

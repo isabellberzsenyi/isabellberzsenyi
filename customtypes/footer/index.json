@@ -1,0 +1,46 @@
+{
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "footer_text": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label": "Footer Text",
+          "placeholder": "Text"
+        }
+      },
+      "linkedin_link": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn Link",
+          "placeholder": "LinkedIn",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "github_link": {
+        "type": "Link",
+        "config": {
+          "allowTargetBlank": true,
+          "label": "GitHub Link",
+          "placeholder": "GitHub",
+          "select": null
+        }
+      },
+      "email": {
+        "type": "Link",
+        "config": {
+          "allowTargetBlank": true,
+          "label": "Email",
+          "placeholder": "Email",
+          "select": null
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "custom"
+}

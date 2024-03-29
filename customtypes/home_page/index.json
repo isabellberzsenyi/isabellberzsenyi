@@ -1,0 +1,26 @@
+{
+  "id": "home_page",
+  "label": "Home Page",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "home_page_image": {
+        "type": "Image",
+        "config": {
+          "constraint": {},
+          "thumbnails": [],
+          "label": "Home Page Image"
+        }
+      },
+      "home_page_title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label": "Home Page Title"
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "custom"
+}

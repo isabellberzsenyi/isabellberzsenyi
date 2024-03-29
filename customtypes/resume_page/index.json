@@ -1,0 +1,10 @@
+{
+  "id": "resume_page",
+  "label": "Resume Page",
+  "repeatable": false,
+  "json": {
+    "Main": {}
+  },
+  "status": false,
+  "format": "custom"
+}

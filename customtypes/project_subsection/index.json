@@ -1,0 +1,27 @@
+{
+  "id": "project_subsection",
+  "label": "Project Subsection",
+  "repeatable": true,
+  "json": {
+    "Main": {
+      "subsection_title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+          "label": "Subsection Title",
+          "placeholder": "Subsection Title"
+        }
+      },
+      "subsection_description": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "label": "Subsection Description",
+          "placeholder": "Description"
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "custom"
+}
