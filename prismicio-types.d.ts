@@ -5,60 +5,6 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Content for About Page documents
- */
-interface AboutPageDocumentData {
-  /**
-   * About Title field in *About Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: About
-   * - **API ID Path**: about_page.about_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  about_title: prismic.TitleField;
-
-  /**
-   * About Image field in *About Page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_page.about_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  about_image: prismic.ImageField<never>;
-
-  /**
-   * About Bio field in *About Page*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Bio
-   * - **API ID Path**: about_page.about_bio
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  about_bio: prismic.RichTextField;
-}
-
-/**
- * About Page document from Prismic
- *
- * - **API ID**: `about_page`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type AboutPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<AboutPageDocumentData>,
-    "about_page",
-    Lang
-  >;
-
-/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -123,59 +69,64 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Content for Home Page documents
- */
-interface HomeDocumentData {
-  /**
-   * Title field in *Home Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-}
-
-/**
- * Home Page document from Prismic
- *
- * - **API ID**: `home`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type HomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+type HomePageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Home Page documents
  */
 interface HomePageDocumentData {
   /**
-   * Home Page Image field in *Home Page*
+   * Home Title field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.home_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  home_title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Home Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomePageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_page.home_page_image
-   * - **Tab**: Main
+   * - **API ID Path**: home_page.meta_image
+   * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  home_page_image: prismic.ImageField<never>;
+  meta_image: prismic.ImageField<never>;
 
   /**
-   * Home Page Title field in *Home Page*
+   * Meta Title field in *Home Page*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home_page.home_page_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  home_page_title: prismic.RichTextField;
+  meta_title: prismic.KeyTextField;
 }
 
 /**
@@ -191,109 +142,6 @@ export type HomePageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<HomePageDocumentData>,
     "home_page",
-    Lang
-  >;
-
-/**
- * Item in *Navigation → Navigation Links*
- */
-export interface NavigationDocumentDataNavigationLinksItem {
-  /**
-   * Navigation Link field in *Navigation → Navigation Links*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: Nav Link
-   * - **API ID Path**: navigation.navigation_links[].navigation_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  navigation_link: prismic.ContentRelationshipField<"navigation_link">;
-}
-
-/**
- * Content for Navigation documents
- */
-interface NavigationDocumentData {
-  /**
-   * Navigation Links field in *Navigation*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.navigation_links[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  navigation_links: prismic.GroupField<
-    Simplify<NavigationDocumentDataNavigationLinksItem>
-  >;
-}
-
-/**
- * Navigation document from Prismic
- *
- * - **API ID**: `navigation`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavigationDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<NavigationDocumentData>,
-    "navigation",
-    Lang
-  >;
-
-/**
- * Content for Navigation Link documents
- */
-interface NavigationLinkDocumentData {
-  /**
-   * Link Title field in *Navigation Link*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Link Name
-   * - **API ID Path**: navigation_link.link_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  link_title: prismic.TitleField;
-
-  /**
-   * Link Subtitle field in *Navigation Link*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Link Subtitle
-   * - **API ID Path**: navigation_link.link_subtitle
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  link_subtitle: prismic.RichTextField;
-
-  /**
-   * Link field in *Navigation Link*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link
-   * - **API ID Path**: navigation_link.link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-}
-
-/**
- * Navigation Link document from Prismic
- *
- * - **API ID**: `navigation_link`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavigationLinkDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<NavigationLinkDocumentData>,
-    "navigation_link",
     Lang
   >;
 
@@ -472,121 +320,10 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Content for Project Subsection documents
- */
-interface ProjectSubsectionDocumentData {
-  /**
-   * Subsection Title field in *Project Subsection*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Subsection Title
-   * - **API ID Path**: project_subsection.subsection_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  subsection_title: prismic.TitleField;
-
-  /**
-   * Subsection Description field in *Project Subsection*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Description
-   * - **API ID Path**: project_subsection.subsection_description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  subsection_description: prismic.RichTextField;
-}
-
-/**
- * Project Subsection document from Prismic
- *
- * - **API ID**: `project_subsection`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProjectSubsectionDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<ProjectSubsectionDocumentData>,
-    "project_subsection",
-    Lang
-  >;
-
-interface ResumePageDocumentData {}
-
-/**
- * Resume Page document from Prismic
- *
- * - **API ID**: `resume_page`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ResumePageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<ResumePageDocumentData>,
-    "resume_page",
-    Lang
-  >;
-
-/**
- * Content for Work Page documents
- */
-interface WorkPageDocumentData {
-  /**
-   * Work Page Title field in *Work Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Work
-   * - **API ID Path**: work_page.work_page_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  work_page_title: prismic.TitleField;
-
-  /**
-   * Work Page Description field in *Work Page*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Description
-   * - **API ID Path**: work_page.work_page_description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  work_page_description: prismic.RichTextField;
-}
-
-/**
- * Work Page document from Prismic
- *
- * - **API ID**: `work_page`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type WorkPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<WorkPageDocumentData>,
-    "work_page",
-    Lang
-  >;
-
 export type AllDocumentTypes =
-  | AboutPageDocument
   | FooterDocument
-  | HomeDocument
   | HomePageDocument
-  | NavigationDocument
-  | NavigationLinkDocument
-  | ProjectDocument
-  | ProjectSubsectionDocument
-  | ResumePageDocument
-  | WorkPageDocument;
+  | ProjectDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -598,29 +335,15 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      AboutPageDocument,
-      AboutPageDocumentData,
       FooterDocument,
       FooterDocumentData,
-      HomeDocument,
-      HomeDocumentData,
       HomePageDocument,
       HomePageDocumentData,
-      NavigationDocument,
-      NavigationDocumentData,
-      NavigationDocumentDataNavigationLinksItem,
-      NavigationLinkDocument,
-      NavigationLinkDocumentData,
+      HomePageDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataProjectTopicsItem,
       ProjectDocumentDataProjectContentItem,
-      ProjectSubsectionDocument,
-      ProjectSubsectionDocumentData,
-      ResumePageDocument,
-      ResumePageDocumentData,
-      WorkPageDocument,
-      WorkPageDocumentData,
       AllDocumentTypes,
     };
   }

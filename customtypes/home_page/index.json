@@ -1,26 +1,52 @@
 {
+  "format": "page",
   "id": "home_page",
   "label": "Home Page",
   "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
-      "home_page_image": {
-        "type": "Image",
+      "home_title": {
+        "type": "Text",
         "config": {
-          "constraint": {},
-          "thumbnails": [],
-          "label": "Home Page Image"
+          "label": "Home Title",
+          "placeholder": ""
         }
       },
-      "home_page_title": {
-        "type": "StructuredText",
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
-          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label": "Home Page Title"
+          "choices": {}
         }
       }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
     }
-  },
-  "status": true,
-  "format": "custom"
+  }
 }
