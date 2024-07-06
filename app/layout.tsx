@@ -1,10 +1,11 @@
 import '../styles/globals.css';
+import '../styles/fonts.css';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName } from '@/prismicio'
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Isabell Berzsenyi",
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ minWidth: '1vw', minHeight: '1vh' }}>
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"></link>
+      </head>
+      <body style={{ minWidth: '1vw', minHeight: '1vh' }}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
