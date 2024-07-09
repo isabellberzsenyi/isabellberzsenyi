@@ -1,7 +1,12 @@
-export default function Home() {
+import HomePage from "@/components/home-page/HomePage";
+import { getHome } from "@/lib/api";
+
+export default async function Home() {
+  const homeData = await getHome();
+
   return (
-    <div style={{ textAlign: 'center', paddingTop: '40vh' }}>
-      work in progress - come back soon
+    <div style={{ textAlign: 'center'}}>
+      <HomePage homePageData={homeData} />
     </div>
   );
 }

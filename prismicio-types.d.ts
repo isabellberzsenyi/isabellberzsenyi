@@ -87,6 +87,83 @@ interface HomePageDocumentData {
   home_title: prismic.KeyTextField;
 
   /**
+   * Yellow Text field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.yellow_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  yellow_text: prismic.KeyTextField;
+
+  /**
+   * Scroll CTA Text field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.scroll_cta_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  scroll_cta_text: prismic.KeyTextField;
+
+  /**
+   * About Header field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.about_header
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_header: prismic.KeyTextField;
+
+  /**
+   * About Subheader field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.about_subheader
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_subheader: prismic.KeyTextField;
+
+  /**
+   * About Paragraph field in *Home Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.about_paragraph
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  about_paragraph: prismic.RichTextField;
+
+  /**
+   * Work CTA Text field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.work_cta_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  work_cta_text: prismic.KeyTextField;
+
+  /**
+   * Work Header field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.work_header
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  work_header: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *Home Page*
    *
    * - **Field Type**: Slice Zone

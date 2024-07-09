@@ -13,6 +13,57 @@
           "placeholder": ""
         }
       },
+      "yellow_text": {
+        "type": "Text",
+        "config": {
+          "label": "Yellow Text",
+          "placeholder": ""
+        }
+      },
+      "scroll_cta_text": {
+        "type": "Text",
+        "config": {
+          "label": "Scroll CTA Text",
+          "placeholder": ""
+        }
+      },
+      "about_header": {
+        "type": "Text",
+        "config": {
+          "label": "About Header",
+          "placeholder": ""
+        }
+      },
+      "about_subheader": {
+        "type": "Text",
+        "config": {
+          "label": "About Subheader",
+          "placeholder": ""
+        }
+      },
+      "about_paragraph": {
+        "type": "StructuredText",
+        "config": {
+          "label": "About Paragraph",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "work_cta_text": {
+        "type": "Text",
+        "config": {
+          "label": "Work CTA Text",
+          "placeholder": ""
+        }
+      },
+      "work_header": {
+        "type": "Text",
+        "config": {
+          "label": "Work Header",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
