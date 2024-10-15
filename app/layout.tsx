@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName } from '@/prismicio'
+import StyledComponentsRegistry from './registry';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
         <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"></link>
       </head>
       <body style={{ minWidth: '1vw', minHeight: '1vh' }}>
-        {children}
+      <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
