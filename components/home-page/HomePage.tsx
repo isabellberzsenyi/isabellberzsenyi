@@ -16,13 +16,14 @@ import {
   CtaArrow
 } from './HomePage.styles';
 import { H1, H2, H2Italic, YellowPill, CtaItalic, P } from '@/style/typography';
-import { ProjectDocumentDataWithUID } from '@/lib/types';
+// import { ProjectDocumentDataWithUID } from '@/lib/types';
 import Image from 'next/image';
 import { RTParagraphNode } from '@prismicio/client';
 
 interface HomePageProps {
   homePageData: HomePageDocumentData;
-  projects: ProjectDocumentDataWithUID[];
+  // TODO: fix this type
+  projects: any[];
 }
 
 export default function HomePage({ homePageData, projects }: HomePageProps) {

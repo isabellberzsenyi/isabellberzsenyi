@@ -2,16 +2,10 @@
   "id": "footer",
   "label": "Footer",
   "repeatable": false,
+  "status": true,
+  "format": "custom",
   "json": {
     "Main": {
-      "footer_text": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label": "Footer Text",
-          "placeholder": "Text"
-        }
-      },
       "linkedin_link": {
         "type": "Link",
         "config": {
@@ -30,17 +24,20 @@
           "select": null
         }
       },
-      "email": {
-        "type": "Link",
+      "email_cta_text": {
+        "type": "Text",
         "config": {
-          "allowTargetBlank": true,
-          "label": "Email",
-          "placeholder": "Email",
-          "select": null
+          "label": "Email CTA Text",
+          "placeholder": ""
+        }
+      },
+      "email_text": {
+        "type": "Text",
+        "config": {
+          "label": "Email Text",
+          "placeholder": ""
         }
       }
     }
-  },
-  "status": true,
-  "format": "custom"
+  }
 }

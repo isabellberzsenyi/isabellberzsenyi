@@ -1,0 +1,51 @@
+{
+  "format": "custom",
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "home_link": {
+        "type": "Link",
+        "config": {
+          "label": "Home Link",
+          "select": "document",
+          "customtypes": ["home_page"]
+        }
+      },
+      "home_link_text": {
+        "type": "Text",
+        "config": {
+          "label": "Home Link Text",
+          "placeholder": ""
+        }
+      },
+      "work_link": {
+        "type": "Link",
+        "config": {
+          "label": "Work Link",
+          "select": "document",
+          "customtypes": ["project_page"]
+        }
+      },
+      "about_link": {
+        "type": "Link",
+        "config": {
+          "label": "About Link",
+          "select": "document",
+          "customtypes": ["about_page"]
+        }
+      },
+      "resume_link": {
+        "type": "Link",
+        "config": {
+          "label": "Resume Link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      }
+    }
+  }
+}

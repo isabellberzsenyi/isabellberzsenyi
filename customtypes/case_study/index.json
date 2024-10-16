@@ -1,0 +1,24 @@
+{
+  "format": "custom",
+  "id": "case_study",
+  "label": "Case Study",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "case_study_title": {
+        "type": "Text",
+        "config": {
+          "label": "Case Study Title",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

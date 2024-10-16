@@ -4,21 +4,184 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutPageDocumentDataSlicesSlice = CeramicImagesSlice;
+
+/**
+ * Content for About Page documents
+ */
+interface AboutPageDocumentData {
+  /**
+   * About Title 1 field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.about_title_1
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_title_1: prismic.KeyTextField;
+
+  /**
+   * About Title Italic 2 field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.about_title_italic_2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_title_italic_2: prismic.KeyTextField;
+
+  /**
+   * About Title 3 field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.about_title_3
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_title_3: prismic.KeyTextField;
+
+  /**
+   * About Paragraph field in *About Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.about_paragraph
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  about_paragraph: prismic.RichTextField;
+
+  /**
+   * Ceramics Title field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.ceramics_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  ceramics_title: prismic.KeyTextField;
+
+  /**
+   * Ceramics Paragraph field in *About Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.ceramics_paragraph
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  ceramics_paragraph: prismic.RichTextField;
+
+  /**
+   * Instagram Handle field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.instagram_handle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instagram_handle: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *About Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutPageDocumentDataSlicesSlice> /**
+   * Meta Description field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *About Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * About Page document from Prismic
+ *
+ * - **API ID**: `about_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutPageDocumentData>,
+    "about_page",
+    Lang
+  >;
+
+/**
+ * Content for Case Study documents
+ */
+interface CaseStudyDocumentData {
+  /**
+   * Case Study Title field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  case_study_title: prismic.KeyTextField;
+}
+
+/**
+ * Case Study document from Prismic
+ *
+ * - **API ID**: `case_study`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CaseStudyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CaseStudyDocumentData>,
+    "case_study",
+    Lang
+  >;
+
 /**
  * Content for Footer documents
  */
 interface FooterDocumentData {
-  /**
-   * Footer Text field in *Footer*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Text
-   * - **API ID Path**: footer.footer_text
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  footer_text: prismic.RichTextField;
-
   /**
    * LinkedIn Link field in *Footer*
    *
@@ -42,15 +205,26 @@ interface FooterDocumentData {
   github_link: prismic.LinkField;
 
   /**
-   * Email field in *Footer*
+   * Email CTA Text field in *Footer*
    *
-   * - **Field Type**: Link
-   * - **Placeholder**: Email
-   * - **API ID Path**: footer.email
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email_cta_text
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  email: prismic.LinkField;
+  email_cta_text: prismic.KeyTextField;
+
+  /**
+   * Email Text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email_text: prismic.KeyTextField;
 }
 
 /**
@@ -66,6 +240,38 @@ export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<FooterDocumentData>,
     "footer",
+    Lang
+  >;
+
+/**
+ * Content for Headshot documents
+ */
+interface HeadshotDocumentData {
+  /**
+   * Image field in *Headshot*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: headshot.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Headshot document from Prismic
+ *
+ * - **API ID**: `headshot`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeadshotDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HeadshotDocumentData>,
+    "headshot",
     Lang
   >;
 
@@ -223,85 +429,133 @@ export type HomePageDocument<Lang extends string = string> =
   >;
 
 /**
- * Content for Project documents
+ * Content for Navigation documents
  */
-interface ProjectDocumentData {
+interface NavigationDocumentData {
   /**
-   * Project Title field in *Project*
+   * Home Link field in *Navigation*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  project_title: prismic.KeyTextField;
-
-  /**
-   * Project Date field in *Project*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_date
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  project_date: prismic.DateField;
-
-  /**
-   * Project Preview Picture field in *Project*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_preview_picture
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  project_preview_picture: prismic.ImageField<never>;
-
-  /**
-   * Code Link field in *Project*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project.code_link
+   * - **API ID Path**: navigation.home_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  code_link: prismic.LinkField;
+  home_link: prismic.ContentRelationshipField<"home_page">;
 
   /**
-   * Project Preview Text field in *Project*
+   * Home Link Text field in *Navigation*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.project_preview_text
+   * - **API ID Path**: navigation.home_link_text
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  project_preview_text: prismic.KeyTextField;
+  home_link_text: prismic.KeyTextField;
+
+  /**
+   * Work Link field in *Navigation*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.work_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  work_link: prismic.ContentRelationshipField<"project_page">;
+
+  /**
+   * About Link field in *Navigation*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.about_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  about_link: prismic.ContentRelationshipField<"about_page">;
+
+  /**
+   * Resume Link field in *Navigation*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.resume_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  resume_link: prismic.LinkField;
 }
 
 /**
- * Project document from Prismic
+ * Navigation document from Prismic
  *
- * - **API ID**: `project`
- * - **Repeatable**: `true`
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type ProjectDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ProjectDocumentData>,
-    "project",
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
     Lang
   >;
 
 export type AllDocumentTypes =
+  | AboutPageDocument
+  | CaseStudyDocument
   | FooterDocument
+  | HeadshotDocument
   | HomePageDocument
-  | ProjectDocument;
+  | NavigationDocument;
+
+/**
+ * Primary content in *CeramicImages → Items*
+ */
+export interface CeramicImagesSliceDefaultItem {
+  /**
+   * Image field in *CeramicImages → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ceramic_images.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for CeramicImages Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CeramicImagesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<CeramicImagesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CeramicImages*
+ */
+type CeramicImagesSliceVariation = CeramicImagesSliceDefault;
+
+/**
+ * CeramicImages Shared Slice
+ *
+ * - **API ID**: `ceramic_images`
+ * - **Description**: CeramicImages
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CeramicImagesSlice = prismic.SharedSlice<
+  "ceramic_images",
+  CeramicImagesSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -313,14 +567,25 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutPageDocument,
+      AboutPageDocumentData,
+      AboutPageDocumentDataSlicesSlice,
+      CaseStudyDocument,
+      CaseStudyDocumentData,
       FooterDocument,
       FooterDocumentData,
+      HeadshotDocument,
+      HeadshotDocumentData,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
-      ProjectDocument,
-      ProjectDocumentData,
+      NavigationDocument,
+      NavigationDocumentData,
       AllDocumentTypes,
+      CeramicImagesSlice,
+      CeramicImagesSliceDefaultItem,
+      CeramicImagesSliceVariation,
+      CeramicImagesSliceDefault,
     };
   }
 }
