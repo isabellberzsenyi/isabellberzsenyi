@@ -27,20 +27,12 @@
           "placeholder": ""
         }
       },
-      "project_preview_picture": {
+      "project_preview_image": {
         "type": "Image",
         "config": {
-          "label": "Project Preview Picture",
+          "label": "Project Preview Image",
           "constraint": {},
           "thumbnails": []
-        }
-      },
-      "code_link": {
-        "type": "Link",
-        "config": {
-          "label": "Code Link",
-          "placeholder": "",
-          "select": null
         }
       },
       "project_preview_text": {
