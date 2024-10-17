@@ -50,17 +50,6 @@ const H3Italic = styled(H3)`
   font-style: ${fontStyles.italic};
 `;
 
-const YellowPill = styled.div`
-  font-family: ${fonts.neueMontreal};
-  font-weight: ${fontWeights.bold};
-  font-size: 1em;
-  background-color: ${colors.SUN_YELLOW};
-  color: ${colors.BLACK};
-  padding: 0.5em 1em;
-  border-radius: 0.9em;
-  display: inline-block;
-`;
-
 const CtaItalic = styled.a`
   font-family: ${fonts.editorialOld};
   font-weight: ${fontWeights.normal};
@@ -77,4 +66,4 @@ const P = styled.p`
   color: ${colors.BLACK};
 `;
 
-export { fontWeights, fonts, H1, H2, H2Italic, H3, H3Italic, YellowPill, CtaItalic, P };
+export { fontWeights, fonts, H1, H2, H2Italic, H3, H3Italic, CtaItalic, P };

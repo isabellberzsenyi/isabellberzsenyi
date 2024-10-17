@@ -11,37 +11,48 @@ type AboutPageDocumentDataSlicesSlice = CeramicImagesSlice;
  */
 interface AboutPageDocumentData {
   /**
-   * About Title 1 field in *About Page*
+   * About Title Row 1 field in *About Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_page.about_title_1
+   * - **API ID Path**: about_page.about_title_row_1
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  about_title_1: prismic.KeyTextField;
+  about_title_row_1: prismic.KeyTextField;
 
   /**
-   * About Title Italic 2 field in *About Page*
+   * About Title Row 2 Italic field in *About Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_page.about_title_italic_2
+   * - **API ID Path**: about_page.about_title_row_2_italic
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  about_title_italic_2: prismic.KeyTextField;
+  about_title_row_2_italic: prismic.KeyTextField;
 
   /**
-   * About Title 3 field in *About Page*
+   * About Title Row 2 Normal field in *About Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_page.about_title_3
+   * - **API ID Path**: about_page.about_title_row_2_normal
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  about_title_3: prismic.KeyTextField;
+  about_title_row_2_normal: prismic.KeyTextField;
+
+  /**
+   * About Title Row 3 field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.about_title_row_3
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_title_row_3: prismic.KeyTextField;
 
   /**
    * About Paragraph field in *About Page*
@@ -146,6 +157,8 @@ export type AboutPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type CaseStudyDocumentDataSlicesSlice = never;
+
 /**
  * Content for Case Study documents
  */
@@ -160,6 +173,17 @@ interface CaseStudyDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   case_study_title: prismic.KeyTextField;
+
+  /**
+   * `slices` field in *Case Study*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CaseStudyDocumentDataSlicesSlice>;
 }
 
 /**
@@ -243,38 +267,6 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Content for Headshot documents
- */
-interface HeadshotDocumentData {
-  /**
-   * Image field in *Headshot*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: headshot.image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
- * Headshot document from Prismic
- *
- * - **API ID**: `headshot`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type HeadshotDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<HeadshotDocumentData>,
-    "headshot",
-    Lang
-  >;
-
 type HomePageDocumentDataSlicesSlice = never;
 
 /**
@@ -291,17 +283,6 @@ interface HomePageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   home_title: prismic.KeyTextField;
-
-  /**
-   * Yellow Text field in *Home Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home_page.yellow_text
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  yellow_text: prismic.KeyTextField;
 
   /**
    * Scroll CTA Text field in *Home Page*
@@ -504,13 +485,56 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Shared documents
+ */
+interface SharedDocumentData {
+  /**
+   * Yellow Text field in *Shared*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shared.yellow_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  yellow_text: prismic.KeyTextField;
+
+  /**
+   * Headshot field in *Shared*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shared.headshot
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  headshot: prismic.ImageField<never>;
+}
+
+/**
+ * Shared document from Prismic
+ *
+ * - **API ID**: `shared`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SharedDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SharedDocumentData>,
+    "shared",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | AboutPageDocument
   | CaseStudyDocument
   | FooterDocument
-  | HeadshotDocument
   | HomePageDocument
-  | NavigationDocument;
+  | NavigationDocument
+  | SharedDocument;
 
 /**
  * Primary content in *CeramicImages → Items*
@@ -572,15 +596,16 @@ declare module "@prismicio/client" {
       AboutPageDocumentDataSlicesSlice,
       CaseStudyDocument,
       CaseStudyDocumentData,
+      CaseStudyDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
-      HeadshotDocument,
-      HeadshotDocumentData,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
+      SharedDocument,
+      SharedDocumentData,
       AllDocumentTypes,
       CeramicImagesSlice,
       CeramicImagesSliceDefaultItem,

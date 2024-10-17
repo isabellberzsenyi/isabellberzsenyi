@@ -1,0 +1,26 @@
+{
+  "format": "custom",
+  "id": "shared",
+  "label": "Shared",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "yellow_text": {
+        "type": "Text",
+        "config": {
+          "label": "Yellow Text",
+          "placeholder": ""
+        }
+      },
+      "headshot": {
+        "type": "Image",
+        "config": {
+          "label": "Headshot",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
