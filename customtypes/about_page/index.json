@@ -6,24 +6,31 @@
   "status": true,
   "json": {
     "Main": {
-      "about_title_1": {
+      "about_title_row_1": {
         "type": "Text",
         "config": {
-          "label": "About Title 1",
+          "label": "About Title Row 1",
           "placeholder": ""
         }
       },
-      "about_title_italic_2": {
+      "about_title_row_2_italic": {
         "type": "Text",
         "config": {
-          "label": "About Title Italic 2",
+          "label": "About Title Row 2 Italic",
           "placeholder": ""
         }
       },
-      "about_title_3": {
+      "about_title_row_2_normal": {
         "type": "Text",
         "config": {
-          "label": "About Title 3",
+          "label": "About Title Row 2 Normal",
+          "placeholder": ""
+        }
+      },
+      "about_title_row_3": {
+        "type": "Text",
+        "config": {
+          "label": "About Title Row 3",
           "placeholder": ""
         }
       },
