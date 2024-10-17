@@ -20,12 +20,6 @@ const WorkLink = styled(CtaItalic)`
 const HomeTitleWrapper = styled.div`
   margin: auto;
   width: 70%;
-  padding-top: 10em;
-`;
-
-const YellowPillWrapper = styled.div`
-  padding-bottom: 3em;
-  padding-top: 2em;
 `;
 
 const PinkArchContainer = styled.div`
@@ -96,7 +90,6 @@ export {
   WorkLink, 
   WorkPreviewContainer, 
   HomeTitleWrapper,
-  YellowPillWrapper,
   PinkArchContainer,
   PinkArch,
   AboutSectionContainer,

@@ -23,8 +23,8 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"></link>
       </head>
-      <body style={{ minWidth: '1vw', minHeight: '1vh' }}>
-      <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      <body style={{ minWidth: '1vw', minHeight: '1vh', backgroundColor: '#FFF8EE' }}>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>

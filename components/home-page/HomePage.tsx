@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomePageDocumentData } from '@/prismicio-types';
+import { HomePageDocumentData, SharedDocumentData } from '@/prismicio-types';
 import { 
   AboutSectionContainer, 
   AboutTextWrapper, 
@@ -11,25 +11,26 @@ import {
   WorkLinkWrapper, 
   WorkSectionContainer, 
   WorkPreviewContainer,
-  YellowPillWrapper, 
   WorkPreviewItem,
   CtaArrow
 } from './HomePage.styles';
-import { H1, H2, H2Italic, YellowPill, CtaItalic, P } from '@/style/typography';
+import { H1, H2, H2Italic, CtaItalic, P } from '@/style/typography';
 // import { ProjectDocumentDataWithUID } from '@/lib/types';
 import Image from 'next/image';
 import { RTParagraphNode } from '@prismicio/client';
+import YellowPill from '../yellow-pill/YellowPill';
+import { PrismicNextImage } from '@prismicio/next';
 
 interface HomePageProps {
   homePageData: HomePageDocumentData;
   // TODO: fix this type
   projects: any[];
+  sharedData: SharedDocumentData;
 }
 
-export default function HomePage({ homePageData, projects }: HomePageProps) {
+export default function HomePage({ homePageData, projects, sharedData }: HomePageProps) {
   const {
     home_title: homeTitle,
-    yellow_text: yellowText,
     scroll_cta_text: scrollCtaText,
     about_header: aboutHeader,
     about_subheader: aboutSubheader,
@@ -38,16 +39,22 @@ export default function HomePage({ homePageData, projects }: HomePageProps) {
     work_header: workHeader
   } = homePageData;
 
+  const {
+    yellow_text: yellowText,
+    headshot: headshot
+  } = sharedData;
+
   return (
     <>
       <HomeTitleWrapper>
         <H1>{homeTitle}</H1>
       </HomeTitleWrapper>
-      <YellowPillWrapper>
-        <YellowPill>
-          {yellowText?.toUpperCase()}
-        </YellowPill>
-      </YellowPillWrapper>
+      {
+        yellowText && (
+          <YellowPill text={yellowText} />
+        )
+      }
+      {/* TODO: add scroll down to about section */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <CtaItalic>{scrollCtaText}</CtaItalic>
         <CtaArrow>
@@ -58,19 +65,27 @@ export default function HomePage({ homePageData, projects }: HomePageProps) {
         <PinkArch />
       </PinkArchContainer>
       <AboutSectionContainer>
-        <H2Italic>{aboutHeader}</H2Italic>
-        <AboutTextWrapper>
-          <PinkSubheader>{aboutSubheader}</PinkSubheader>
-          {aboutParagraph.map((node, idx) => {
-            const textNode = node as RTParagraphNode;
-            return (
-            <P key={idx}>{textNode.text}</P>
-            )
-          })}
-          <WorkLinkWrapper>
-            <WorkLink href="#projects">{workCtaText}</WorkLink>
-          </WorkLinkWrapper>
-        </AboutTextWrapper>
+        <div>
+          <H2Italic>{aboutHeader}</H2Italic>
+          <AboutTextWrapper>
+            <PinkSubheader>{aboutSubheader}</PinkSubheader>
+            {aboutParagraph.map((node, idx) => {
+              const textNode = node as RTParagraphNode;
+              return (
+              <P key={idx}>{textNode.text}</P>
+              )
+            })}
+            <WorkLinkWrapper>
+              <WorkLink href="#projects">{workCtaText}</WorkLink>
+            </WorkLinkWrapper>
+          </AboutTextWrapper>
+        </div>
+        {/* <PrismicNextImage 
+          style={{ marginLeft: '5em', filter: 'grayscale(100%)', borderRadius: '10px' }}
+          field={headshot} 
+          width={headshot.dimensions?.width || 100} 
+          height={headshot.dimensions?.height || 100} 
+        /> */}
       </AboutSectionContainer>
 
       <WorkSectionContainer>

@@ -13,13 +13,6 @@
           "placeholder": ""
         }
       },
-      "yellow_text": {
-        "type": "Text",
-        "config": {
-          "label": "Yellow Text",
-          "placeholder": ""
-        }
-      },
       "scroll_cta_text": {
         "type": "Text",
         "config": {
