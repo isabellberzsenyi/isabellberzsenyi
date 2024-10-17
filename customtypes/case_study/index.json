@@ -1,5 +1,5 @@
 {
-  "format": "custom",
+  "format": "page",
   "id": "case_study",
   "label": "Case Study",
   "repeatable": true,
@@ -17,6 +17,115 @@
         "config": {
           "label": "Case Study Title",
           "placeholder": ""
+        }
+      },
+      "case_study_preview": {
+        "type": "Text",
+        "config": {
+          "label": "Case Study Preview",
+          "placeholder": ""
+        }
+      },
+      "case_study_overview": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Case Study Overview",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "case_study_links": {
+        "type": "Group",
+        "config": {
+          "label": "Case Study Links",
+          "repeat": true,
+          "fields": {
+            "link_title": {
+              "type": "Text",
+              "config": {
+                "label": "Link Title",
+                "placeholder": ""
+              }
+            },
+            "link_url": {
+              "type": "Text",
+              "config": {
+                "label": "Link Url",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "case_study_tags": {
+        "type": "Group",
+        "config": {
+          "label": "Case Study Tags",
+          "repeat": true,
+          "fields": {
+            "tag_title": {
+              "type": "Text",
+              "config": {
+                "label": "Tag Title",
+                "placeholder": ""
+              }
+            },
+            "tag_description": {
+              "type": "Text",
+              "config": {
+                "label": "Tag Description",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "case_study_image": {
+        "type": "Image",
+        "config": {
+          "label": "Case Study Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "project_motivation_subheader": {
+        "type": "Text",
+        "config": {
+          "label": "Project Motivation Subheader",
+          "placeholder": ""
+        }
+      },
+      "project_motivation_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Project Motivation Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "technical_learnings_subheader": {
+        "type": "Text",
+        "config": {
+          "label": "Technical Learnings Subheader",
+          "placeholder": ""
+        }
+      },
+      "technical_learnings_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Technical Learnings Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
         }
       }
     }

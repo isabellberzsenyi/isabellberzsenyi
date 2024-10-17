@@ -1,6 +1,8 @@
 import { createClient } from "@/prismicio";
 import { 
   AboutPageDocumentData, 
+  CaseStudyDocument, 
+  CaseStudyDocumentData, 
   FooterDocumentData, 
   HomePageDocumentData,
   NavigationDocumentData,
@@ -13,15 +15,21 @@ import { create } from "domain";
 
 const HOME = 'home_page';
 const ABOUT = 'about_page';
-// const PROJECT = 'project_page';
+const CASE_STUDY = 'case_study';
 const FOOTER = 'footer';
 const SHARED = 'shared';
 
-// export async function getProject(uid: string): Promise<ProjectDocumentData> {
-//   const client = createClient();
-//   const { data } = await client.getByUID(WO, uid);
-//   return data;
-// };
+export async function getCaseStudy(uid: string): Promise<CaseStudyDocumentData> {
+  const client = createClient();
+  const { data } = await client.getByUID(CASE_STUDY, uid);
+  return data;
+};
+
+export async function getCaseStudies(): Promise<CaseStudyDocument[]> {
+  const client = createClient();
+  const resp = await client.getAllByType(CASE_STUDY);
+  return resp;
+};
 
 export async function getHome(): Promise<HomePageDocumentData> {
   const client = createClient();
@@ -33,7 +41,7 @@ export async function getAbout(): Promise<AboutPageDocumentData> {
   const client = createClient();
   const { data } = await client.getSingle(ABOUT);
   return data;
-}
+};
 
 export async function getShared(): Promise<SharedDocumentData> {
   const client = createClient();
@@ -45,10 +53,10 @@ export async function getNavigation(): Promise<NavigationDocumentData> {
   const client = createClient();
   const { data } = await client.getSingle('navigation');
   return data;
-}
+};
 
 export async function getFooter(): Promise<FooterDocumentData> {
   const client = createClient();
   const { data } = await client.getSingle(FOOTER);
   return data;
-}
+};

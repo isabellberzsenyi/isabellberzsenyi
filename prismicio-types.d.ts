@@ -157,6 +157,56 @@ export type AboutPageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Case Study → Case Study Links*
+ */
+export interface CaseStudyDocumentDataCaseStudyLinksItem {
+  /**
+   * Link Title field in *Case Study → Case Study Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_links[].link_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_title: prismic.KeyTextField;
+
+  /**
+   * Link Url field in *Case Study → Case Study Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_links[].link_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_url: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Case Study → Case Study Tags*
+ */
+export interface CaseStudyDocumentDataCaseStudyTagsItem {
+  /**
+   * Tag Title field in *Case Study → Case Study Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_tags[].tag_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag_title: prismic.KeyTextField;
+
+  /**
+   * Tag Description field in *Case Study → Case Study Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_tags[].tag_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag_description: prismic.KeyTextField;
+}
+
 type CaseStudyDocumentDataSlicesSlice = never;
 
 /**
@@ -175,7 +225,110 @@ interface CaseStudyDocumentData {
   case_study_title: prismic.KeyTextField;
 
   /**
-   * `slices` field in *Case Study*
+   * Case Study Preview field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_preview
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  case_study_preview: prismic.KeyTextField;
+
+  /**
+   * Case Study Overview field in *Case Study*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_overview
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  case_study_overview: prismic.RichTextField;
+
+  /**
+   * Case Study Links field in *Case Study*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  case_study_links: prismic.GroupField<
+    Simplify<CaseStudyDocumentDataCaseStudyLinksItem>
+  >;
+
+  /**
+   * Case Study Tags field in *Case Study*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_tags[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  case_study_tags: prismic.GroupField<
+    Simplify<CaseStudyDocumentDataCaseStudyTagsItem>
+  >;
+
+  /**
+   * Case Study Image field in *Case Study*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.case_study_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  case_study_image: prismic.ImageField<never>;
+
+  /**
+   * Project Motivation Subheader field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.project_motivation_subheader
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_motivation_subheader: prismic.KeyTextField;
+
+  /**
+   * Project Motivation Text field in *Case Study*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.project_motivation_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  project_motivation_text: prismic.RichTextField;
+
+  /**
+   * Technical Learnings Subheader field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.technical_learnings_subheader
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  technical_learnings_subheader: prismic.KeyTextField;
+
+  /**
+   * Technical Learnings Text field in *Case Study*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.technical_learnings_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  technical_learnings_text: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Case Study*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -596,6 +749,8 @@ declare module "@prismicio/client" {
       AboutPageDocumentDataSlicesSlice,
       CaseStudyDocument,
       CaseStudyDocumentData,
+      CaseStudyDocumentDataCaseStudyLinksItem,
+      CaseStudyDocumentDataCaseStudyTagsItem,
       CaseStudyDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,

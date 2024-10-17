@@ -66,4 +66,4 @@ const P = styled.p`
   color: ${colors.BLACK};
 `;
 
-export { fontWeights, fonts, H1, H2, H2Italic, H3, H3Italic, CtaItalic, P };
+export { fontWeights, fonts, fontStyles, H1, H2, H2Italic, H3, H3Italic, CtaItalic, P };
