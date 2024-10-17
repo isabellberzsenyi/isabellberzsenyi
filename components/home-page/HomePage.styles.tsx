@@ -1,5 +1,4 @@
-"use client";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../style/colors";
 import { CtaItalic, fonts, fontWeights } from "../../style/typography";
 import { jump } from "@/style/animation";
@@ -55,6 +54,7 @@ const WorkLinkWrapper = styled.div`
 
 const WorkSectionContainer = styled.div`
   height: 100vh;
+  margin-top: 8em
 `;
 
 const WorkPreviewContainer = styled.div`
@@ -72,10 +72,40 @@ const WorkPreviewContainer = styled.div`
 `;
 
 const WorkPreviewItem = styled.div`
-  border: 1px solid ${colors.BLACK};
-  margin: 1em;
-  padding: 1em;
+  margin: 1em 1em 1em 0;
+  padding: 1em 1em 1em 0;
   min-width: 50em;
+`;
+
+interface WorkPreviewImageProps {
+  imageUrl: string;
+}
+
+const WorkPreviewImage = styled.div<WorkPreviewImageProps>`
+  border-radius: 10px;
+  position: relative;
+  background-image: url(${props => props.imageUrl});
+  background-size: cover;
+  width: 700px;
+  height: 400px;
+
+  &::before {
+    border-radius: 10px;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::before {
+    border-radius: 10px;
+    background-color: transparent;
+  }
 `;
 
 const CtaArrow = styled.span`
@@ -85,6 +115,8 @@ const CtaArrow = styled.span`
   margin-top: 10px;
   animation: ${jump} 1s ease-in-out infinite;
 `;
+
+
 export { 
   PinkSubheader, 
   WorkLink, 
@@ -97,5 +129,6 @@ export {
   WorkLinkWrapper,
   WorkSectionContainer,
   WorkPreviewItem,
+  WorkPreviewImage,
   CtaArrow
 };

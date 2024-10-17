@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState, useRef } from 'react';
 import { HomePageDocumentData, SharedDocumentData } from '@/prismicio-types';
 import { 
   AboutSectionContainer, 
@@ -12,23 +13,23 @@ import {
   WorkSectionContainer, 
   WorkPreviewContainer,
   WorkPreviewItem,
-  CtaArrow
+  CtaArrow,
+  WorkPreviewImage
 } from './HomePage.styles';
-import { H1, H2, H2Italic, CtaItalic, P } from '@/style/typography';
-// import { ProjectDocumentDataWithUID } from '@/lib/types';
-import Image from 'next/image';
+import { H1, H2, H2Italic, CtaItalic, P, H3, fontWeights } from '@/style/typography';
 import { RTParagraphNode } from '@prismicio/client';
 import YellowPill from '../yellow-pill/YellowPill';
-import { PrismicNextImage } from '@prismicio/next';
+import { CaseStudyPreview } from '@/app/page';
+import Link from 'next/link';
 
 interface HomePageProps {
   homePageData: HomePageDocumentData;
   // TODO: fix this type
-  projects: any[];
   sharedData: SharedDocumentData;
+  caseStudyPreviews: CaseStudyPreview[];
 }
 
-export default function HomePage({ homePageData, projects, sharedData }: HomePageProps) {
+export default function HomePage({ homePageData, sharedData, caseStudyPreviews }: HomePageProps) {
   const {
     home_title: homeTitle,
     scroll_cta_text: scrollCtaText,
@@ -89,18 +90,49 @@ export default function HomePage({ homePageData, projects, sharedData }: HomePag
       </AboutSectionContainer>
 
       <WorkSectionContainer>
-        <H2 id="projects">{workHeader}</H2>
-        <WorkPreviewContainer>
+        <H2 id="projects" style={{ textAlign: 'left', marginLeft: '10%' }}>{workHeader}</H2>
+        <div style={{ marginTop: '2em', position: 'relative', marginBottom: '2em' }}> 
+        <WorkPreviewContainer style={{
+                maxWidth: '110vw',
+                display: 'flex',
+                overflowX: 'auto',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                marginLeft: '-10%',
+                paddingLeft: '10%'
+              }}>
+          <div style={{ flex: '0 0 10%'}}></div>
           {
-            projects.map((project) => {
+            caseStudyPreviews.map((caseStudyPreview: CaseStudyPreview) => {
               return (
-                <WorkPreviewItem key={project.uid}>
-                  <P>{project.project_title}</P>
-                </WorkPreviewItem>
+                <>
+                  <Link style={{ textDecoration: 'none' }} href={`/case-study/${caseStudyPreview.uid}`}>
+                    <WorkPreviewItem key={caseStudyPreview.uid} style={{ textAlign: 'left' }}>
+                      <WorkPreviewImage 
+                        imageUrl={caseStudyPreview.imageUrl}
+                      />
+                      <H3 style={{ fontSize: '2.5em', fontWeight: 200 }}>{caseStudyPreview.title}</H3>
+                      <P style={{ fontSize: '1em', margin: '0' }}>{caseStudyPreview.previewText}</P>
+                    </WorkPreviewItem>
+                  </Link>
+                  <WorkPreviewItem key={caseStudyPreview.uid + '2'} style={{ textAlign: 'left' }}>
+                    <WorkPreviewImage 
+                      imageUrl={caseStudyPreview.imageUrl}
+                      // src={caseStudyPreview.imageUrl}
+                      // alt={caseStudyPreview.title}
+                      // width={780}
+                      // height={400}
+                    />
+                    <H3 style={{ fontSize: '2.5em', fontWeight: 200 }}>{caseStudyPreview.title}</H3>
+                    <P style={{ fontSize: '1em', margin: '0' }}>{caseStudyPreview.previewText}</P>
+                  </WorkPreviewItem>
+                </>
               )
             })
           }
-        </WorkPreviewContainer>
+          </WorkPreviewContainer>
+        </div>
       </WorkSectionContainer>
     </>
   );
