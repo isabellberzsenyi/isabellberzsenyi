@@ -5,9 +5,10 @@ import { StyledLink } from "../footer/Footer.styles";
 
 interface NavigationProps {
   navigationData: NavigationDocumentData;
+  backgroundColor?: string;
 }
 
-export default function Navigation({ navigationData }: NavigationProps) {
+export default function Navigation({ navigationData, backgroundColor }: NavigationProps) {
   const {
     work_link: workLink,
     about_link: aboutLink,
@@ -15,9 +16,8 @@ export default function Navigation({ navigationData }: NavigationProps) {
     home_link_text: homeLinkText,
   } = navigationData;
 
-  console.log(aboutLink);
   return(
-    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 5em' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '2em 5em', backgroundColor: backgroundColor }}>
       <H3 style={{ fontWeight: 'light', fontSize: '33px', width: '10px', lineHeight: '33px' }}>
         <StyledLink href={'/'}>{homeLinkText}</StyledLink>
       </H3>

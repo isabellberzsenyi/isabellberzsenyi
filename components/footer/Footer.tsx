@@ -27,8 +27,6 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
     return '#';
   }
 
-  console.log(linkedinLink);
-
   const {
     home_link: homeLink,
     work_link: workLink,

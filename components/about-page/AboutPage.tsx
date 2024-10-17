@@ -31,7 +31,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
 
   return (
     <div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>  
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '1em' }}>  
         <div style={{ paddingLeft: '10%', width: '53%' }}>
           <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
             <H3>{aboutTitleRow1}</H3>
@@ -46,14 +46,14 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
           {
             yellowText && <YellowPill text={yellowText} />
           }
-            {aboutParagraph.map((node, idx) => {
-              const textNode = node as RTParagraphNode;
-              return (
-                <div key={idx} style={{ marginBottom: '1em', width: '90%' }}>
-                  <P>{textNode.text}</P>
-                </div>
-              );
-            })}
+          {aboutParagraph.map((node, idx) => {
+            const textNode = node as RTParagraphNode;
+            return (
+              <div key={idx} style={{ marginBottom: '1em', width: '90%' }}>
+                <P>{textNode.text}</P>
+              </div>
+            );
+          })}
         </div>
         <PrismicNextImage 
           style={{ marginLeft: '5em', filter: 'grayscale(100%)', borderRadius: '10px' }}
@@ -92,14 +92,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
                 return slice.items.map((item, idx) => {
                   const url = item.image.url || '';
                   return (
-                      <CeramicsImage key={idx} imageUrl={url}>
-                      {/* <PrismicNextImage 
-                        field={item.image} 
-                        alt={""}
-                        width={item.image.dimensions?.width || 100} 
-                        height={item.image.dimensions?.height || 100}
-                      /> */}
-                    </CeramicsImage>
+                    <CeramicsImage key={idx} imageUrl={url} />
                   )
                 });
             })}
