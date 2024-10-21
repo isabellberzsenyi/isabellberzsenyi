@@ -3,7 +3,7 @@ import { colors } from "@/style/colors";
 import { CtaItalic, fontWeights, P } from "@/style/typography";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
-import { StyledLink } from "./Footer.styles";
+import { StyledLink } from "@/style/shared.styles";
 import { LinkField } from "@prismicio/client";
 import { FilledLinkToWebField } from "@prismicio/client";
 

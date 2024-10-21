@@ -7,12 +7,12 @@ const EmptyScrollDiv = styled.div`
   flex: 0 0 10%;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{ noUnderlineOnHover?: boolean }>`
   text-decoration: none;
   color: inherit;
   
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${props => props.noUnderlineOnHover ? 'none' : 'underline'};
     cursor: pointer;
   }
 `;
@@ -41,4 +41,8 @@ const ScrollContainer = styled.div`
   scrollbar-width: none;  /* Firefox */
 `;
 
-export { EmptyScrollDiv, StyledLink, HeadshotImage, ScrollContainer };
+const ParagraphWrapper = styled.div`
+  margin-bottom: 1em;
+`;
+
+export { EmptyScrollDiv, StyledLink, HeadshotImage, ScrollContainer, ParagraphWrapper };

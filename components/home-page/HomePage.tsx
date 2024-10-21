@@ -95,7 +95,10 @@ export default function HomePage({ homePageData, sharedData, caseStudyPreviews }
         <WorkPreviewContainer>
           <EmptyScrollDiv></EmptyScrollDiv>
           { caseStudyPreviews.map((caseStudyPreview: CaseStudyPreview) => (
-            <StyledLink href={`/case-study/${caseStudyPreview.uid}`}>
+            <StyledLink 
+              href={`/case-study/${caseStudyPreview.uid}`} 
+              noUnderlineOnHover={true}
+            >
               <WorkPreviewItem key={caseStudyPreview.uid}>
                 <WorkPreviewImage imageUrl={caseStudyPreview.imageUrl} />
                 <H3 style={{ fontSize: '2.5em', fontWeight: 200 }}>{caseStudyPreview.title}</H3>

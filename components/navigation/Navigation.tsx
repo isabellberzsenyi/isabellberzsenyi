@@ -1,7 +1,7 @@
 import { NavigationDocumentData } from "@/prismicio-types";
+import { StyledLink } from "@/style/shared.styles";
 import { H3, P } from "@/style/typography";
 import Link from "next/link";
-import { StyledLink } from "../footer/Footer.styles";
 
 interface NavigationProps {
   navigationData: NavigationDocumentData;

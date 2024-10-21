@@ -1,6 +1,6 @@
 'use client';
 import { colors } from "@/style/colors";
-import { ScrollContainer } from "@/style/shared.styles";
+import { ParagraphWrapper, ScrollContainer } from "@/style/shared.styles";
 import { H3Italic } from "@/style/typography";
 import styled from "styled-components";
 
@@ -35,8 +35,7 @@ const AboutH3Underline = styled(H3Italic)`
   text-decoration-color: ${colors.BABY_PINK};
 `;
 
-const AboutParagraphWrapper = styled.div`
-  margin-bottom: 1em;
+const AboutParagraphWrapper = styled(ParagraphWrapper)`
   width: 90%;
 `;
 
