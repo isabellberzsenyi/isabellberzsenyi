@@ -21,12 +21,10 @@ import {
   AboutTextImageWrapper
 } from './HomePage.styles';
 import { EmptyScrollDiv, HeadshotImage, StyledLink } from '@/style/shared.styles';
-import { H1, H2, H2Italic, P, H3 } from '@/style/typography';
+import { H1, P, H3 } from '@/style/typography';
 import { RTParagraphNode } from '@prismicio/client';
 import YellowPill from '../yellow-pill/YellowPill';
 import { CaseStudyPreview } from '@/app/page';
-import Link from 'next/link';
-import { PrismicNextImage } from '@prismicio/next';
 
 interface HomePageProps {
   homePageData: HomePageDocumentData;

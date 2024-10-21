@@ -1,10 +1,20 @@
 import { AboutPageDocumentData, SharedDocumentData } from "@/prismicio-types"
-import { colors } from "@/style/colors";
-import { CtaItalic, H3, H3Italic, P } from "@/style/typography";
+import { CtaItalic, H3, P } from "@/style/typography";
 import { RTParagraphNode } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import YellowPill from "../yellow-pill/YellowPill";
-import CeramicsImage from "./AboutPage.styles";
+import { 
+  CeramicsImage, 
+  AboutSectionContainer, 
+  AboutTextWrapper, 
+  AboutHeaderWrapper, 
+  AboutH3Underline, 
+  AboutParagraphWrapper, 
+  CeramicSectionContainer, 
+  AboutLeftPadding, 
+  CeramicsImagesContainer, 
+  CeramicsTextWrapper
+} from "./AboutPage.styles";
+import { EmptyScrollDiv, HeadshotImage } from "@/style/shared.styles";
 
 interface AboutPageProps {
   aboutPageData: AboutPageDocumentData;
@@ -29,79 +39,68 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
     headshot: headshot
   } = sharedData;
 
+  const instagramUrl = `https://www.instagram.com/${instagramHandle}`;
+
   return (
-    <div>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '1em' }}>  
-        <div style={{ paddingLeft: '10%', width: '53%' }}>
-          <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+    <>
+      <AboutSectionContainer>  
+        <AboutTextWrapper>
+          <AboutHeaderWrapper>
             <H3>{aboutTitleRow1}</H3>
-            <H3Italic 
-              style={{ textDecoration: 'underline', textDecorationColor: colors.BABY_PINK }}
-            >
-              {aboutTitleRow2Italic}&nbsp;
-            </H3Italic>
-            <H3>{aboutTitleRow2Normal}</H3>
+            <AboutH3Underline>{aboutTitleRow2Italic}</AboutH3Underline>
+            <H3>&nbsp;{aboutTitleRow2Normal}</H3>
             <H3>{aboutTitleRow3}</H3>
-          </div>
-          {
-            yellowText && <YellowPill text={yellowText} />
-          }
-          {aboutParagraph.map((node, idx) => {
+          </AboutHeaderWrapper>
+          { yellowText && <YellowPill text={yellowText} /> }
+          { aboutParagraph.map((node, idx) => {
             const textNode = node as RTParagraphNode;
             return (
-              <div key={idx} style={{ marginBottom: '1em', width: '90%' }}>
+              <AboutParagraphWrapper key={idx}>
                 <P>{textNode.text}</P>
-              </div>
+              </AboutParagraphWrapper>
             );
           })}
-        </div>
-        <PrismicNextImage 
-          style={{ marginLeft: '5em', filter: 'grayscale(100%)', borderRadius: '10px' }}
+        </AboutTextWrapper>
+        <HeadshotImage
           field={headshot} 
-          width={headshot.dimensions?.width || 100} 
-          height={headshot.dimensions?.height || 100} 
+          width={400} 
+          height={540} 
         />
-      </div>
-      <div style={{ marginTop: '7em', backgroundColor: colors.PEACH, paddingTop: '5em', paddingBottom: '5em' }}>
-        <H3 style={{ paddingLeft: '10%'}}>{ceramicsTitle}</H3>
-        <div style={{ width: '45%', paddingLeft: '10%'}}>
-          {ceramicsParagraph.map((node, idx) => {
-            const textNode = node as RTParagraphNode;
-            return (
-              <div key={idx} style={{ marginBottom: '1em' }}>
-                <P>{textNode.text}</P>
-              </div>
-            )
-          })}
-        </div>
-        <div style={{ marginTop: '7em', position: 'relative', marginBottom: '2em' }}> 
-          <div style={{
-                maxWidth: '110vw',
-                display: 'flex',
-                overflowX: 'auto',
-                WebkitOverflowScrolling: 'touch',
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                marginLeft: '-10%',
-                paddingLeft: '10%'
-              }}
-          >
-            <div style={{ flex: '0 0 10%'}}></div>
-            {
-              ceramicsImageSlices.map((slice, idx) => {
-                return slice.items.map((item, idx) => {
-                  const url = item.image.url || '';
-                  return (
-                    <CeramicsImage key={idx} imageUrl={url} />
-                  )
-                });
+      </AboutSectionContainer>
+
+      <CeramicSectionContainer>
+        <AboutLeftPadding> 
+          <H3>{ceramicsTitle}</H3>
+          <CeramicsTextWrapper>
+            {ceramicsParagraph.map((node, idx) => {
+              const textNode = node as RTParagraphNode;
+              return (
+                <AboutParagraphWrapper key={idx}>
+                  <P>{textNode.text}</P>
+                </AboutParagraphWrapper>
+              );
             })}
-          </div>
-        </div>
-        <CtaItalic href={`https://www.instagram.com/${instagramHandle}`} style={{paddingLeft: '10%'}}>
-          @{instagramHandle}
-        </CtaItalic>
-      </div>
-    </div>
+          </CeramicsTextWrapper>
+        </AboutLeftPadding>
+        <CeramicsImagesContainer> 
+          <EmptyScrollDiv></EmptyScrollDiv>
+          { ceramicsImageSlices.map((slice, _) => {
+            return slice.items.map((item, idx) => {
+              if (!item.image.url) return null;
+
+              const url = item.image.url;
+              return (
+                <CeramicsImage key={idx} imageUrl={url} />
+              )
+            });
+          })}
+        </CeramicsImagesContainer>
+        <AboutLeftPadding>
+          <CtaItalic href={instagramUrl}>
+            @{instagramHandle}
+          </CtaItalic>
+        </AboutLeftPadding>
+      </CeramicSectionContainer>
+    </>
   )
 };

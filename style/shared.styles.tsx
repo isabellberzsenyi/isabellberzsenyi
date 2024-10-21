@@ -24,4 +24,21 @@ const HeadshotImage = styled(PrismicNextImage)`
   z-index: 1;
 `;
 
-export { EmptyScrollDiv, StyledLink, HeadshotImage };
+const ScrollContainer = styled.div`
+  max-width: 110vw;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-left: -10%;
+  padding-left: 10%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+`;
+
+export { EmptyScrollDiv, StyledLink, HeadshotImage, ScrollContainer };
