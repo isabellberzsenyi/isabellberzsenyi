@@ -1,17 +1,17 @@
 'use client';
 import styled from "styled-components";
 import { colors } from "../../style/colors";
-import { fonts } from "../../style/typography";
+import { fonts, fontWeights } from "../../style/typography";
 
 const AnimatedLogo = styled.div<{ $fontSize: number; $opacity: number }>`
+  font-family: ${fonts.editorialOld};
   font-size: ${props => props.$fontSize}em;
-  font-weight: 200;
-  line-height: 1em;
+  color: ${colors.BLACK};
   opacity: ${props => props.$opacity};
+  font-weight: ${fontWeights.light};
+  line-height: 1em;
   transition: font-size 2s, opacity 2s;
   text-align: left;
-  font-family: ${fonts.editorialOld};
-  color: ${colors.BLACK};
   display: flex;
   margin-left: 4.5%;
   margin-top: 2%;
@@ -22,6 +22,12 @@ const AnimatedLogo = styled.div<{ $fontSize: number; $opacity: number }>`
   left: 0;
   right: 0;
   bottom: 0;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  animation: fadeIn 2s ease-in-out;
 `;
 
 const MainContent = styled.div<{ $opacity: number }>`
