@@ -27,7 +27,7 @@ const AnimatedLogo = styled.div<{ $fontSize: number; $opacity: number }>`
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 `;
 
 const MainContent = styled.div<{ $opacity: number }>`
