@@ -1,38 +1,31 @@
 "use client";
-import React from 'react';
-import { HomePageDocumentData, SharedDocumentData } from '@/prismicio-types';
+import React, { useEffect, useState } from 'react';
 import { 
-  AboutSectionContainer, 
-  AboutTextWrapper, 
-  HomeTitleWrapper, 
-  PinkArch, 
-  PinkArchContainer, 
-  WorkLink, 
-  WorkLinkWrapper, 
-  WorkSectionContainer, 
-  WorkPreviewContainer,
-  WorkPreviewItem,
-  CtaArrow,
-  WorkPreviewImage,
-  CtaArrowWrapper,
-  AboutSectionSubheader,
-  WorkSectionH2,
-  AboutSectionH2,
-  AboutTextImageWrapper
+  FooterDocumentData, 
+  HomePageDocumentData, 
+  NavigationDocumentData, 
+  SharedDocumentData 
+} from '@/prismicio-types';
+import {
+  MainContent,
+  AnimatedLogo
 } from './HomePage.styles';
-import { EmptyScrollDiv, HeadshotImage, StyledLink } from '@/style/shared.styles';
-import { H1, P, H3 } from '@/style/typography';
-import { RTParagraphNode } from '@prismicio/client';
-import YellowPill from '../yellow-pill/YellowPill';
 import { CaseStudyPreview } from '@/app/page';
+import Navigation from '../navigation/Navigation';
+import Footer from '../footer/Footer';
+import WorkSection from './work-section/WorkSection';
+import AboutSection from './about-section/AboutSection';
+import HomeHeader from './home-header/HomeHeader';
 
 interface HomePageProps {
+  navigationData: NavigationDocumentData;
   homePageData: HomePageDocumentData;
   sharedData: SharedDocumentData;
   caseStudyPreviews: CaseStudyPreview[];
+  footerData: FooterDocumentData;
 }
 
-export default function HomePage({ homePageData, sharedData, caseStudyPreviews }: HomePageProps) {
+export default function HomePage({ navigationData, homePageData, sharedData, caseStudyPreviews, footerData }: HomePageProps) {
   const {
     home_title: homeTitle,
     scroll_cta_text: scrollCtaText,
@@ -48,67 +41,80 @@ export default function HomePage({ homePageData, sharedData, caseStudyPreviews }
     headshot: headshot
   } = sharedData;
 
+  const [fontSize, setFontSize] = useState(18);
+  const [logoOpacity, setLogoOpacity] = useState(1);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const targetFontSize = 2;
+    let decrementAmount = 1;
+
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+  
+    const timer = setInterval(() => {
+      if (fontSize > targetFontSize) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        if (decrementAmount > 1) {
+          decrementAmount -= 0.1;
+        }
+        
+        setFontSize(fontSize - decrementAmount);
+      } else {
+        clearInterval(timer);
+        
+        setTimeout(() => {
+          setLogoOpacity(0);
+        }, 1500);
+        
+        setTimeout(() => {
+          document.body.style.overflow = 'auto';
+          document.body.style.position = 'relative';
+
+          setTimeout(() => {
+            setShowContent(true);
+          }, 1500);
+        }, 1800);
+      }
+    }, 10);
+
+    return () => {
+      clearInterval(timer);
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'relative';
+    };
+  }, [fontSize, logoOpacity, showContent]);
+
   return (
-    <>
-      <HomeTitleWrapper>
-        <H1>{homeTitle}</H1>
-      </HomeTitleWrapper>
-      { yellowText && (
-        <YellowPill text={yellowText} />
+    <div style={{ minHeight: '100vh', overflow: 'hidden',  top: 0, left: 0}}>
+      {!showContent && (
+        <AnimatedLogo $fontSize={fontSize} $opacity={logoOpacity} >
+          <div>
+            Izzy <br /> Berzsenyi
+          </div>
+        </AnimatedLogo>
       )}
-      <CtaArrowWrapper>
-        {scrollCtaText}
-        <CtaArrow>
-          →
-        </CtaArrow>
-      </CtaArrowWrapper>
-
-      <PinkArchContainer>
-        <PinkArch />
-      </PinkArchContainer>
-
-      <AboutSectionContainer>
-        <AboutSectionH2>{aboutHeader}</AboutSectionH2>
-        <AboutTextImageWrapper>
-          <AboutTextWrapper>
-            <AboutSectionSubheader>{aboutSubheader}</AboutSectionSubheader>
-            { aboutParagraph.map((node, idx) => {
-              const textNode = node as RTParagraphNode;
-              return (
-                <P key={idx}>{textNode.text}</P>
-              );
-            })}
-            <WorkLinkWrapper>
-              <WorkLink href="#projects">{workCtaText}</WorkLink>
-            </WorkLinkWrapper>
-          </AboutTextWrapper>
-          <HeadshotImage
-            field={headshot} 
-            width={400} 
-            height={540} 
-          />
-        </AboutTextImageWrapper>
-      </AboutSectionContainer>
-
-      <WorkSectionContainer>
-        <WorkSectionH2 id="projects">{workHeader}</WorkSectionH2>
-        <WorkPreviewContainer>
-          <EmptyScrollDiv></EmptyScrollDiv>
-          { caseStudyPreviews.map((caseStudyPreview: CaseStudyPreview) => (
-            <StyledLink 
-              key={caseStudyPreview.uid}
-              href={`/case-study/${caseStudyPreview.uid}`} 
-              noUnderlineOnHover={true}
-            >
-              <WorkPreviewItem>
-                <WorkPreviewImage imageUrl={caseStudyPreview.imageUrl} />
-                <H3 style={{ fontSize: '2.5em', fontWeight: 200 }}>{caseStudyPreview.title}</H3>
-                <P style={{ fontSize: '1em', margin: '0' }}>{caseStudyPreview.previewText}</P>
-              </WorkPreviewItem>
-            </StyledLink>
-          ))}
-        </WorkPreviewContainer>
-      </WorkSectionContainer>
-    </>
+      <MainContent $opacity={showContent ? 1 : 0}>
+        <Navigation navigationData={navigationData} />
+        <HomeHeader
+          homeTitle={homeTitle}
+          yellowText={yellowText}
+          scrollCtaText={scrollCtaText}
+        />
+        <AboutSection
+          aboutHeader={aboutHeader}
+          aboutSubheader={aboutSubheader}
+          aboutParagraph={aboutParagraph}
+          headshot={headshot}
+          workCtaText={workCtaText}
+        />
+        <WorkSection 
+          workHeader={workHeader} 
+          caseStudyPreviews={caseStudyPreviews} 
+        />
+        <Footer footerData={footerData} navigationData={navigationData} />
+      </MainContent>
+    </div>
   );
 };

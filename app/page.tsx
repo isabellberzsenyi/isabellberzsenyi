@@ -1,11 +1,11 @@
 import Footer from "@/components/footer/Footer";
 import HomePage from "@/components/home-page/HomePage";
 import Navigation from "@/components/navigation/Navigation";
-
+import { H1 } from "@/style/typography";
 import { getFooter, getNavigation, getHome, getShared, getCaseStudies } from "@/lib/api";
-// import { ProjectDocumentDataWithUID } from "@/lib/types";
 import { CaseStudyDocument, FooterDocumentData, HomePageDocumentData, NavigationDocumentData, SharedDocumentData } from "@/prismicio-types";
-import { KeyTextField } from "@prismicio/client";
+import React, { useEffect, useState } from "react";
+import { AnimatedLogo, MainContent } from "@/components/home-page/HomePage.styles";
 
 export interface CaseStudyPreview {
   uid: string;
@@ -14,12 +14,13 @@ export interface CaseStudyPreview {
   previewText: string;
 }
 
+
 export default async function Home() {
-  const homeData: HomePageDocumentData = await getHome();
-  const sharedData: SharedDocumentData = await getShared();
-  const navigationData: NavigationDocumentData = await getNavigation();
-  const footerData: FooterDocumentData = await getFooter();
-  const caseStudies: CaseStudyDocument[] = await getCaseStudies();
+  const homeData = await getHome();
+  const sharedData = await getShared();
+  const navigationData = await getNavigation();
+  const footerData = await getFooter();
+  const caseStudies = await getCaseStudies();
 
   const caseStudyPreviews: CaseStudyPreview[] = 
     caseStudies.map((caseStudy: CaseStudyDocument) => {
@@ -31,12 +32,15 @@ export default async function Home() {
       };
     });
 
-
   return (
     <div style={{ textAlign: 'center'}}>
-      <Navigation navigationData={navigationData} />
-      <HomePage homePageData={homeData} sharedData={sharedData} caseStudyPreviews={caseStudyPreviews} />
-      <Footer footerData={footerData} navigationData={navigationData} />
+      <HomePage 
+        navigationData={navigationData} 
+        homePageData={homeData} 
+        sharedData={sharedData} 
+        caseStudyPreviews={caseStudyPreviews} 
+        footerData={footerData} 
+      />
     </div>
   );
 }

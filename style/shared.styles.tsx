@@ -7,12 +7,12 @@ const EmptyScrollDiv = styled.div`
   flex: 0 0 10%;
 `;
 
-const StyledLink = styled(Link)<{ noUnderlineOnHover?: boolean }>`
+const StyledLink = styled(Link)<{ $noUnderlineOnHover?: boolean }>`
   text-decoration: none;
   color: inherit;
   
   &:hover {
-    text-decoration: ${props => props.noUnderlineOnHover ? 'none' : 'underline'};
+    text-decoration: ${props => props.$noUnderlineOnHover ? 'none' : 'underline'};
     cursor: pointer;
   }
 `;
