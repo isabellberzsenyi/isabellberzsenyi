@@ -21,12 +21,12 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
       <H3 style={{ fontWeight: 'light', fontSize: '33px', width: '10px', lineHeight: '33px' }}>
         <StyledLink href={'/'}>{homeLinkText}</StyledLink>
       </H3>
-      <div style={{ display: 'flex', justifyContent: 'space-between', justifyItems: 'flex-end', width: '25%' }}>
-        <P>Work</P>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', justifyItems: 'flex-end', width: '25%' }}>
+        {/* <P>Work</P> */}
         <P>
           <StyledLink href={'/about'}>About</StyledLink>
         </P>
-        <P>Resume</P>
+        {/* <P>Resume</P> */}
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
           <P >
             <StyledLink href={'/'}>Home</StyledLink>
           </P>
-          <P>Work</P>
+          {/* <P>Work</P> */}
           <P >
             <StyledLink href={'/about'}>About</StyledLink>
           </P>
@@ -57,7 +57,7 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
               GitHub
             </StyledLink>
           </P>
-          <P>Resume</P>
+          {/* <P>Resume</P> */}
         </div>
       </div>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center' }}>
