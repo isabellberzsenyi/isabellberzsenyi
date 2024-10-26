@@ -13,6 +13,8 @@ import { RTParagraphNode } from "@prismicio/client";
 import { HeadshotImage } from "@/style/shared.styles";
 import { KeyTextField, RichTextField, ImageField } from "@prismicio/client";
 import { P } from "@/style/typography";
+import { useMatchMedia } from "@/lib/hooks";
+import { breakpointsObj } from "@/lib/responsive";
 
 interface AboutSectionProps {
   aboutHeader: KeyTextField;
@@ -22,7 +24,16 @@ interface AboutSectionProps {
   workCtaText: KeyTextField;
 }
 
-export default function AboutSection({ aboutHeader, aboutSubheader, aboutParagraph, headshot, workCtaText }: AboutSectionProps) {
+export default function AboutSection({ 
+  aboutHeader, 
+  aboutSubheader, 
+  aboutParagraph, 
+  headshot, 
+  workCtaText
+}: AboutSectionProps) {
+
+  const isMobile = useMatchMedia(`(max-width: ${breakpointsObj.mobileLg}px)`);
+
   return (
     <>
       <PinkArchContainer>
@@ -46,11 +57,11 @@ export default function AboutSection({ aboutHeader, aboutSubheader, aboutParagra
           </AboutTextWrapper>
           <HeadshotImage
             field={headshot} 
-            width={400} 
-            height={540} 
+            width={isMobile ? 300 : 400} 
+            height={isMobile ? 450 : 540} 
           />
         </AboutTextImageWrapper>
       </AboutSectionContainer>
     </>
   )
-}
+};

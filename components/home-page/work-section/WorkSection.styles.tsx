@@ -2,10 +2,22 @@
 import styled from "styled-components";
 import { H2 } from "@/style/typography";
 import { ScrollContainer } from "@/style/shared.styles";
+import { min } from "@/lib/responsive";
 
 const WorkSectionContainer = styled.div`
-  height: 100vh;
-  margin-top: 8em
+  margin-bottom: 5em;
+  margin-top: 5em;
+
+  @media ${min.tabletSm} {
+    margin-bottom: 0;
+    margin-top: 8em;
+    height: 100vh;
+  }
+
+  @media ${min.desktopLg} {
+    height: auto;
+    margin-bottom: 8em;
+  }
 `;
 
 const WorkSectionH2 = styled(H2)`
@@ -14,16 +26,24 @@ const WorkSectionH2 = styled(H2)`
 `;
 
 const WorkPreviewContainer = styled(ScrollContainer)`
-  margin-top: 2em;
-  margin-bottom: 2em;
+  
   position: relative;
+
+  @media ${min.tabletSm} {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
 `;
 
 const WorkPreviewItem = styled.div`
   margin: 1em 1em 1em 0;
   padding: 1em 1em 1em 0;
-  min-width: 50em;
+  min-width: 20em;
   text-align: left;
+
+  @media ${min.tabletSm} {
+    min-width: 50em;
+  }
 `;
 
 const WorkPreviewImage = styled.div<{ $imageUrl: string }>`
@@ -31,8 +51,8 @@ const WorkPreviewImage = styled.div<{ $imageUrl: string }>`
   position: relative;
   background-image: url(${props => props.$imageUrl});
   background-size: cover;
-  width: 700px;
-  height: 400px;
+  width: 300px;
+  height: 171px;
 
   &::before {
     border-radius: 10px;
@@ -50,6 +70,11 @@ const WorkPreviewImage = styled.div<{ $imageUrl: string }>`
   &:hover::before {
     border-radius: 10px;
     background-color: transparent;
+  }
+
+  @media ${min.tabletSm} {
+    width: 700px;
+    height: 400px;
   }
 `;
 

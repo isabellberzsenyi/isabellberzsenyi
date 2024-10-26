@@ -16,6 +16,9 @@ import Footer from '../footer/Footer';
 import WorkSection from './work-section/WorkSection';
 import AboutSection from './about-section/AboutSection';
 import HomeHeader from './home-header/HomeHeader';
+import { breakpointsObj } from "@/lib/responsive";
+import { useMatchMedia } from "@/lib/hooks";
+
 
 interface HomePageProps {
   navigationData: NavigationDocumentData;

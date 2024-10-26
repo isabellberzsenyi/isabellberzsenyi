@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { CtaItalic } from "@/style/typography";
 import { jump } from "@/style/animation";
+import { min } from "@/lib/responsive";
 
 const HomeTitleWrapper = styled.div`
   margin: auto;
-  width: 70%;
+  width: 100%;
+
+  @media ${min.desktop} {
+    width: 70%;
+  }
 `;
 
 const CtaArrowWrapper = styled(CtaItalic)`

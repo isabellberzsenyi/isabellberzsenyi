@@ -26,4 +26,4 @@ export default function HomeHeader({ homeTitle, yellowText, scrollCtaText }: Hom
       </CtaArrowWrapper>
     </>
   );
-}
+};
