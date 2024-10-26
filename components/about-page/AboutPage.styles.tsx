@@ -1,12 +1,7 @@
-'use client';
 import { colors } from "@/style/colors";
 import { ParagraphWrapper, ScrollContainer } from "@/style/shared.styles";
 import { H3Italic } from "@/style/typography";
 import styled from "styled-components";
-
-interface CeramicsImageProps {
-  imageUrl: string;
-}
 
 const AboutLeftPadding = styled.div`
   padding-left: 10%;
@@ -56,11 +51,11 @@ const CeramicsImagesContainer = styled(ScrollContainer)`
   margin-bottom: 2em;
 `;
 
-const CeramicsImage = styled.div<CeramicsImageProps>`
+const CeramicsImage = styled.div<{ $imageUrl: string }>`
   border-radius: 10px;
   margin-right: 1em;
   position: relative;
-  background-image: url(${props => props.imageUrl});
+  background-image: url(${props => props.$imageUrl});
   background-size: cover;
   min-width: 330px;
   height: 440px;

@@ -1,3 +1,5 @@
+'use client';
+
 import { AboutPageDocumentData, SharedDocumentData } from "@/prismicio-types"
 import { CtaItalic, H3, P } from "@/style/typography";
 import { RTParagraphNode } from "@prismicio/client";
@@ -90,7 +92,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
 
               const url = item.image.url;
               return (
-                <CeramicsImage key={idx} imageUrl={url} />
+                <CeramicsImage key={idx} $imageUrl={url} />
               )
             });
           })}
