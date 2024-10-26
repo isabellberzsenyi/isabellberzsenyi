@@ -1,6 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { colors } from "./colors";
+import { min } from "@/lib/responsive";
 
 const fonts = {
   editorialOld: 'PP Editorial Old, sans-serif',
@@ -22,16 +23,40 @@ const H1 = styled.h1`
   font-weight: ${fontWeights.normal};
   color: ${colors.BLACK};
   line-height: 1.25em;
-  font-size: 7.5em;
+  font-size: 2.3em;
   margin: 0;
+
+  @media ${min.mobileLg} {
+    font-size: 3em;
+  }
+
+  @media ${min.tabletSm} {
+    font-size: 5.2em;
+  }
+
+  @media ${min.tablet} {
+    font-size: 5.5em;
+  }
+
+  @media ${min.tabletLg} {
+    font-size: 7.5em;
+  }
 `;
 
 const H2 = styled.h2`
   font-family: ${fonts.editorialOld};
   font-weight: ${fontWeights.normal};
   color: ${colors.BLACK};
-  font-size: 5.25em;
+  font-size: 2.5em;
   margin: 0;
+
+  @media ${min.tabletSm} {
+    font-size: 4.5em;
+  }
+
+  @media ${min.tabletLg} {
+    font-size: 5.25em;
+  }
 `;
 
 const H2Italic = styled(H2)`

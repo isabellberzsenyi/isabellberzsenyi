@@ -7,12 +7,9 @@ import {
   HomePageDocumentData,
   NavigationDocumentData,
   SharedDocumentData, 
-  // ProjectDocument, 
-  // ProjectDocumentData 
 } from "@/prismicio-types";
-import { create } from "domain";
-// import { ProjectDocumentDataWithUID } from "./types";
 
+const NAVIGATION = 'navigation';
 const HOME = 'home_page';
 const ABOUT = 'about_page';
 const CASE_STUDY = 'case_study';
@@ -51,7 +48,7 @@ export async function getShared(): Promise<SharedDocumentData> {
 
 export async function getNavigation(): Promise<NavigationDocumentData> {
   const client = createClient();
-  const { data } = await client.getSingle('navigation');
+  const { data } = await client.getSingle(NAVIGATION);
   return data;
 };
 

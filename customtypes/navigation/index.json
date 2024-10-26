@@ -6,14 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "home_link": {
-        "type": "Link",
-        "config": {
-          "label": "Home Link",
-          "select": "document",
-          "customtypes": ["home_page"]
-        }
-      },
       "home_link_text": {
         "type": "Text",
         "config": {
@@ -21,29 +13,27 @@
           "placeholder": ""
         }
       },
-      "work_link": {
-        "type": "Link",
+      "navigation_link": {
+        "type": "Group",
         "config": {
-          "label": "Work Link",
-          "select": "document",
-          "customtypes": ["project_page"]
-        }
-      },
-      "about_link": {
-        "type": "Link",
-        "config": {
-          "label": "About Link",
-          "select": "document",
-          "customtypes": ["about_page"]
-        }
-      },
-      "resume_link": {
-        "type": "Link",
-        "config": {
-          "label": "Resume Link",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "select": null
+          "label": "Navigation Link",
+          "repeat": true,
+          "fields": {
+            "link_label": {
+              "type": "Text",
+              "config": {
+                "label": "Link Label",
+                "placeholder": ""
+              }
+            },
+            "link_url": {
+              "type": "Text",
+              "config": {
+                "label": "Link Url",
+                "placeholder": ""
+              }
+            }
+          }
         }
       }
     }

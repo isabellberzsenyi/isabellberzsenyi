@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import Link from 'next/link';
 import { PrismicNextImage } from "@prismicio/next";
+import { min } from "@/lib/responsive";
 
 const EmptyScrollDiv = styled.div`
   flex: 0 0 10%;
@@ -18,10 +19,14 @@ const StyledLink = styled(Link)<{ $noUnderlineOnHover?: boolean }>`
 `;
 
 const HeadshotImage = styled(PrismicNextImage)`
-  margin-left: 5em;
+  margin-left: 0;
   filter: grayscale(100%);
   border-radius: 10px;
   z-index: 1;
+
+  @media ${min.desktop}
+    margin-left: 5em;
+  }
 `;
 
 const ScrollContainer = styled.div`

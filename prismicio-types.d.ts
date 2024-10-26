@@ -563,20 +563,34 @@ export type HomePageDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Navigation → Navigation Link*
+ */
+export interface NavigationDocumentDataNavigationLinkItem {
+  /**
+   * Link Label field in *Navigation → Navigation Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.navigation_link[].link_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label: prismic.KeyTextField;
+
+  /**
+   * Link Url field in *Navigation → Navigation Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.navigation_link[].link_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_url: prismic.KeyTextField;
+}
+
+/**
  * Content for Navigation documents
  */
 interface NavigationDocumentData {
-  /**
-   * Home Link field in *Navigation*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.home_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  home_link: prismic.ContentRelationshipField<"home_page">;
-
   /**
    * Home Link Text field in *Navigation*
    *
@@ -589,37 +603,17 @@ interface NavigationDocumentData {
   home_link_text: prismic.KeyTextField;
 
   /**
-   * Work Link field in *Navigation*
+   * Navigation Link field in *Navigation*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.work_link
+   * - **API ID Path**: navigation.navigation_link[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  work_link: prismic.ContentRelationshipField<"project_page">;
-
-  /**
-   * About Link field in *Navigation*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.about_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  about_link: prismic.ContentRelationshipField<"about_page">;
-
-  /**
-   * Resume Link field in *Navigation*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.resume_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  resume_link: prismic.LinkField;
+  navigation_link: prismic.GroupField<
+    Simplify<NavigationDocumentDataNavigationLinkItem>
+  >;
 }
 
 /**
@@ -742,6 +736,17 @@ declare module "@prismicio/client" {
     ): prismic.Client<AllDocumentTypes>;
   }
 
+  interface CreateWriteClient {
+    (
+      repositoryNameOrEndpoint: string,
+      options: prismic.WriteClientConfig,
+    ): prismic.WriteClient<AllDocumentTypes>;
+  }
+
+  interface CreateMigration {
+    (): prismic.Migration<AllDocumentTypes>;
+  }
+
   namespace Content {
     export type {
       AboutPageDocument,
@@ -759,6 +764,7 @@ declare module "@prismicio/client" {
       HomePageDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
+      NavigationDocumentDataNavigationLinkItem,
       SharedDocument,
       SharedDocumentData,
       AllDocumentTypes,
