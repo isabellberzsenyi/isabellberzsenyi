@@ -1,11 +1,21 @@
-import { FooterDocumentData, NavigationDocumentData } from "@/prismicio-types";
-import { colors } from "@/style/colors";
-import { CtaItalic, fontWeights, P } from "@/style/typography";
-import { PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
+import { 
+  FooterDocumentData, 
+  NavigationDocumentData, 
+  NavigationDocumentDataNavigationLinkItem, 
+  Simplify 
+} from "@/prismicio-types";
 import { StyledLink } from "@/style/shared.styles";
 import { LinkField } from "@prismicio/client";
 import { FilledLinkToWebField } from "@prismicio/client";
+import { 
+  EmailCtaWrapper, 
+  EmailLinkWrapper, 
+  FooterContainer, 
+  FooterCtaWrapper, 
+  FooterLinksWrapper 
+} from "./Footer.styles";
+import { P } from "@/style/typography";
+import NavigationLink from "../navigation-link/NavigationLink";
 
 interface FooterProps {
   footerData: FooterDocumentData;
@@ -28,46 +38,61 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
   }
 
   const {
-    home_link: homeLink,
-    work_link: workLink,
-    about_link: aboutLink,
-    resume_link: resumeLink,
+    home_link_text: homeLinkText,
+    navigation_link: navigationLinks
   } = navigationData;
 
+  const resumeLink: Simplify<NavigationDocumentDataNavigationLinkItem> | undefined = 
+    navigationLinks.find((link) => link.link_label === 'Resume');
+
   return (
-    <div style={{ backgroundColor: colors.LIGHT_GREEN, paddingTop: '2em', paddingBottom: '2em', paddingLeft: '5em', paddingRight: '3.5em', display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', width: '20%' }}>
+    <FooterContainer>
+      <FooterLinksWrapper>
         <div>
-          <P >
+          <P>
             <StyledLink href={'/'}>Home</StyledLink>
           </P>
-          {/* <P>Work</P> */}
-          <P >
-            <StyledLink href={'/about'}>About</StyledLink>
-          </P>
+          { navigationLinks.map((link) => (
+            <NavigationLink
+              key={link.link_label || ''}
+              linkUrl={`/${link.link_url}`}
+              linkText={link.link_label || ''}
+            />
+          ))}
+          { resumeLink && (
+            <NavigationLink
+              linkUrl={`/${resumeLink.link_url}`}
+              linkText={resumeLink.link_label || ''}
+            />
+          )}
         </div>
         <div>
-          <P>
-            <StyledLink href={getUrl(linkedinLink)} target="_blank">
-              LinkedIn
-            </StyledLink>
-          </P>
-          <P>
-            <StyledLink href={getUrl(githubLink)} target="_blank">
-              GitHub
-            </StyledLink>
-          </P>
-          {/* <P>Resume</P> */}
+          <NavigationLink
+            linkUrl={getUrl(linkedinLink)}
+            linkText="LinkedIn"
+            target={true}
+          />
+          <NavigationLink
+            linkUrl={getUrl(githubLink)}
+            linkText="GitHub"
+            target={true}
+          />
+          { resumeLink && (
+            <NavigationLink
+              linkUrl={`/${resumeLink.link_url}`}
+              linkText={resumeLink.link_label || ''}
+            />
+          )}
         </div>
-      </div>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center' }}>
-        <CtaItalic style={{ fontSize: '20px', fontWeight: 200 }}>
+      </FooterLinksWrapper>
+      <FooterCtaWrapper>
+        <EmailCtaWrapper>
           {emailCtaText}
-        </CtaItalic>
-        <CtaItalic style={{ fontSize: '40px' }} href={`mailto:${emailText}`} target="_blank">
+        </EmailCtaWrapper>
+        <EmailLinkWrapper href={`mailto:${emailText}`} target="_blank">
           {emailText}
-        </CtaItalic>
-      </div>
-    </div>
+        </EmailLinkWrapper>
+      </FooterCtaWrapper>
+    </FooterContainer>
   )
 };

@@ -2,12 +2,12 @@
 
 import { NavigationDocumentData } from "@/prismicio-types";
 import { StyledLink } from "@/style/shared.styles";
-import { P } from "@/style/typography";
 import { 
   NavigationContainer, 
   NavigationH3, 
   NavigationLinkWrapper 
 } from "./Navigation.styles";
+import NavigationLink from "../navigation-link/NavigationLink";
 
 interface NavigationProps {
   navigationData: NavigationDocumentData;
@@ -26,13 +26,13 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
         <StyledLink href={'/'}>{homeLinkText}</StyledLink>
       </NavigationH3>
       <NavigationLinkWrapper>
-        {
-          navigationLinks.map((link) => (
-            <P key={link.link_label}>
-              <StyledLink href={`/${link.link_url}`}>{link.link_label}</StyledLink>
-            </P>
-          ))
-        }
+        { navigationLinks.map((link) => (
+          <NavigationLink 
+            key={link.link_label || ''}
+            linkUrl={`/${link.link_url}`}
+            linkText={link.link_label || ''}
+          />
+        ))}
       </NavigationLinkWrapper>
     </NavigationContainer>
   );
