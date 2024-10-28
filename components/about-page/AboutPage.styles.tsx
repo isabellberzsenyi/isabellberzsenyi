@@ -1,3 +1,4 @@
+import { min } from "@/lib/responsive";
 import { colors } from "@/style/colors";
 import { ParagraphWrapper, ScrollContainer } from "@/style/shared.styles";
 import { H3Italic } from "@/style/typography";
@@ -9,14 +10,32 @@ const AboutLeftPadding = styled.div`
 
 const AboutSectionContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   margin-top: 1em;
+
+  @media ${min.tabletLg} {
+    flex-direction: row;
+    align-content: center;
+  }
 `;
 
 const AboutTextWrapper = styled(AboutLeftPadding)`
   padding-left: 10%;
-  width: 53%;
+
+  @media ${min.tabletLg} {
+    padding-left: 5%;
+    width: 68%;
+  }
+
+  @media ${min.desktop} {
+    padding-left: 10%;
+    width: 53%;
+  }
+
+  @media ${min.desktopLg} {
+    width: 66%;
+  }
 `;
 
 const AboutHeaderWrapper = styled.div`
@@ -30,25 +49,44 @@ const AboutH3Underline = styled(H3Italic)`
   text-decoration-color: ${colors.BABY_PINK};
 `;
 
+// const AboutYellowPillWrapper = styled.div`
+//   text-align: center;
+
+//   @media ${min.tabletLg} {
+//     text-align: left;
+//   }
+// `;
+
 const AboutParagraphWrapper = styled(ParagraphWrapper)`
   width: 90%;
 `;
 
 const CeramicSectionContainer = styled.div`
-  margin-top: 7em;
+  margin-top: 5em;
   background-color: ${colors.PEACH};
   padding-top: 5em;
   padding-bottom: 5em;
+
+  @media ${min.tabletSm} {
+    margin-top: 7em;
+  }
 `;
 
 const CeramicsTextWrapper = styled.div`
-  width: 45%;
+  width: 80%;
+  @media ${min.tabletLg} {
+    width: 45%;
+  }
 `;
 
 const CeramicsImagesContainer = styled(ScrollContainer)`
-  margin-top: 7em;
+  margin-top: 5em;
   position: relative;
   margin-bottom: 2em;
+
+  @media ${min.tabletSm} {
+    margin-top: 7em;
+  }
 `;
 
 const CeramicsImage = styled.div<{ $imageUrl: string }>`
@@ -56,9 +94,9 @@ const CeramicsImage = styled.div<{ $imageUrl: string }>`
   margin-right: 1em;
   position: relative;
   background-image: url(${props => props.$imageUrl});
-  background-size: cover;
-  min-width: 330px;
-  height: 440px;
+  background-size: contain;
+  min-width: 250px;
+  height: 330px;
 
   &::before {
     content: '';
@@ -75,12 +113,18 @@ const CeramicsImage = styled.div<{ $imageUrl: string }>`
   &:hover::before {
     background-color: transparent;
   }
+
+  @media ${min.tabletSm} {
+    min-width: 330px;
+    height: 440px;
+  }
 `;
 
 export {
   AboutSectionContainer, 
   AboutLeftPadding,
   AboutTextWrapper,
+  // AboutYellowPillWrapper,
   AboutHeaderWrapper,
   AboutH3Underline,
   AboutParagraphWrapper,

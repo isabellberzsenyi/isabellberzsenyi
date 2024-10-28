@@ -15,7 +15,7 @@ const breakpoints = [
   ['tabletSm', 500],
   ['tablet', 768],
   ['tabletLg', 1024],
-  ['desktop', 1280],
+  ['desktop', 1279],
   ['desktopLg', 1440],
   ['desktopXl', 1600],
 ];

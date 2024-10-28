@@ -2,10 +2,15 @@
 import { fonts, fontWeights } from "@/style/typography";
 import { colors } from "@/style/colors";
 import styled from "styled-components";
+import { min } from "@/lib/responsive";
 
 const YellowPillWrapper = styled.div`
-  padding-bottom: 3em;
+  padding-bottom: 2em;
   padding-top: 2em;
+
+  @media ${min.tabletSm} {
+    padding-bottom: 3em;
+  }
 `;
 
 const YellowPillText = styled.div`

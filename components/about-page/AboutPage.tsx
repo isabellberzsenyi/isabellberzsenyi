@@ -14,9 +14,11 @@ import {
   CeramicSectionContainer, 
   AboutLeftPadding, 
   CeramicsImagesContainer, 
-  CeramicsTextWrapper
+  CeramicsTextWrapper,
 } from "./AboutPage.styles";
 import { EmptyScrollDiv, HeadshotImage } from "@/style/shared.styles";
+import { useMatchMedia } from "@/lib/hooks";
+import { breakpointsObj } from "@/lib/responsive";
 
 interface AboutPageProps {
   aboutPageData: AboutPageDocumentData;
@@ -42,18 +44,33 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
   } = sharedData;
 
   const instagramUrl = `https://www.instagram.com/${instagramHandle}`;
+  const isMobile = useMatchMedia(`(max-width: ${breakpointsObj.mobileLg}px)`);
+  const isTablet = useMatchMedia(`(max-width: ${breakpointsObj.tablet}px)`);
+  const smallHeadshot = useMatchMedia(`(max-width: ${breakpointsObj.tabletLg}px)`);
+
+  const headshotWidth = () => {
+    if (isMobile) return 300;
+    if (isTablet) return 325;
+    return 400;
+  }
+
+  const headshotHeight= () => {
+    if (isMobile) return 405;
+    if (isTablet) return 440;
+    return 540;
+  }
 
   return (
     <>
       <AboutSectionContainer>  
         <AboutTextWrapper>
           <AboutHeaderWrapper>
-            <H3>{aboutTitleRow1}</H3>
+            <H3>{aboutTitleRow1}&nbsp;</H3>
             <AboutH3Underline>{aboutTitleRow2Italic}</AboutH3Underline>
-            <H3>&nbsp;{aboutTitleRow2Normal}</H3>
+            <H3>&nbsp;{aboutTitleRow2Normal}&nbsp;</H3>
             <H3>{aboutTitleRow3}</H3>
           </AboutHeaderWrapper>
-          { yellowText && <YellowPill text={yellowText} /> }
+          { yellowText && <YellowPill text={yellowText} /> }          
           { aboutParagraph.map((node, idx) => {
             const textNode = node as RTParagraphNode;
             return (
@@ -64,9 +81,9 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
           })}
         </AboutTextWrapper>
         <HeadshotImage
-          field={headshot} 
-          width={400} 
-          height={540} 
+          field={headshot}
+          width={smallHeadshot ? 300: 400} 
+          height={smallHeadshot ? 405 :540}
         />
       </AboutSectionContainer>
 
@@ -74,7 +91,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
         <AboutLeftPadding> 
           <H3>{ceramicsTitle}</H3>
           <CeramicsTextWrapper>
-            {ceramicsParagraph.map((node, idx) => {
+            { ceramicsParagraph.map((node, idx) => {
               const textNode = node as RTParagraphNode;
               return (
                 <AboutParagraphWrapper key={idx}>
@@ -84,6 +101,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
             })}
           </CeramicsTextWrapper>
         </AboutLeftPadding>
+
         <CeramicsImagesContainer> 
           <EmptyScrollDiv></EmptyScrollDiv>
           { ceramicsImageSlices.map((slice, _) => {
@@ -98,7 +116,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
           })}
         </CeramicsImagesContainer>
         <AboutLeftPadding>
-          <CtaItalic href={instagramUrl}>
+          <CtaItalic href={instagramUrl} target="_blank">
             @{instagramHandle}
           </CtaItalic>
         </AboutLeftPadding>

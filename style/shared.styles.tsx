@@ -24,8 +24,8 @@ const HeadshotImage = styled(PrismicNextImage)`
   border-radius: 10px;
   z-index: 1;
 
-  @media ${min.desktop}
-    margin-left: 5em;
+  @media ${min.desktop} {
+    margin-left: 4em;
   }
 `;
 

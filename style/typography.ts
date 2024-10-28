@@ -47,8 +47,12 @@ const H2 = styled.h2`
   font-family: ${fonts.editorialOld};
   font-weight: ${fontWeights.normal};
   color: ${colors.BLACK};
-  font-size: 2.5em;
+  font-size: 2em;
   margin: 0;
+
+  @media ${min.mobileLg} {
+    font-size: 2.5em;
+  }
 
   @media ${min.tabletSm} {
     font-size: 4.5em;
@@ -68,7 +72,23 @@ const H3 = styled.h3`
   font-weight: ${fontWeights.normal};
   color: ${colors.BLACK};
   margin: 0;
-  font-size: 3.75em;
+  font-size: 1.5em;
+
+  @media ${min.mobileLg} {
+    font-size: 2em;
+  }
+
+  @media ${min.tabletSm} {
+    font-size: 3em;
+  }
+
+  @media ${min.tabletLg} {
+    font-size: 3.6em;
+  }
+
+  @media ${min.desktopLg} {
+    font-size: 3.8em;
+  }
 `;
 
 const H3Italic = styled(H3)`
@@ -86,9 +106,14 @@ const CtaItalic = styled.a`
 const P = styled.p`
   font-family: ${fonts.neueMontreal};
   font-weight: ${fontWeights.normal};
-  font-size: 1.3em;
-  line-height: 1.6em;
+  font-size: 1.1em;
+  line-height: 1.4em;
   color: ${colors.BLACK};
+
+  @media ${min.tabletSm} {
+    font-size: 1.3em;
+    line-height: 1.6em;
+  }
 `;
 
 export { fontWeights, fonts, fontStyles, H1, H2, H2Italic, H3, H3Italic, CtaItalic, P };
