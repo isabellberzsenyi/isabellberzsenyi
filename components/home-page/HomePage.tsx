@@ -44,25 +44,27 @@ export default function HomePage({ navigationData, homePageData, sharedData, cas
     headshot: headshot
   } = sharedData;
 
-  const [fontSize, setFontSize] = useState(18);
-  const [logoOpacity, setLogoOpacity] = useState(1);
-  const [showContent, setShowContent] = useState(false);
+  const [fontSize, setFontSize] = useState<number>(18);
+  const [logoOpacity, setLogoOpacity] = useState<number>(1);
+  const [showContent, setShowContent] = useState<boolean>(false);
+
+  const isMinTablet = useMatchMedia(`(min-width: ${breakpointsObj.tabletSm}px)`);
 
   useEffect(() => {
     const targetFontSize = 2;
     let decrementAmount = 1;
 
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
     document.body.style.position = 'fixed';
-  
+
     const timer = setInterval(() => {
       if (fontSize > targetFontSize) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflowY = 'hidden';
         document.body.style.position = 'fixed';
         if (decrementAmount > 1) {
           decrementAmount -= 0.1;
         }
-        
+    
         setFontSize(fontSize - decrementAmount);
       } else {
         clearInterval(timer);
@@ -70,11 +72,11 @@ export default function HomePage({ navigationData, homePageData, sharedData, cas
         setTimeout(() => {
           setLogoOpacity(0);
         }, 1500);
-        
+    
         setTimeout(() => {
-          document.body.style.overflow = 'auto';
+          document.body.style.overflowY = 'auto';
           document.body.style.position = 'relative';
-
+      
           setTimeout(() => {
             setShowContent(true);
           }, 1500);
@@ -84,10 +86,10 @@ export default function HomePage({ navigationData, homePageData, sharedData, cas
 
     return () => {
       clearInterval(timer);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
       document.body.style.position = 'relative';
     };
-  }, [fontSize, logoOpacity, showContent]);
+  }, [fontSize, logoOpacity, showContent, isMinTablet]);
 
   return (
     <div style={{ minHeight: '100vh', overflow: 'hidden',  top: 0, left: 0}}>
