@@ -49,14 +49,6 @@ const AboutH3Underline = styled(H3Italic)`
   text-decoration-color: ${colors.BABY_PINK};
 `;
 
-// const AboutYellowPillWrapper = styled.div`
-//   text-align: center;
-
-//   @media ${min.tabletLg} {
-//     text-align: left;
-//   }
-// `;
-
 const AboutParagraphWrapper = styled(ParagraphWrapper)`
   width: 90%;
 `;
@@ -124,7 +116,6 @@ export {
   AboutSectionContainer, 
   AboutLeftPadding,
   AboutTextWrapper,
-  // AboutYellowPillWrapper,
   AboutHeaderWrapper,
   AboutH3Underline,
   AboutParagraphWrapper,

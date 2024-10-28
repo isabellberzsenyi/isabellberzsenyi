@@ -62,7 +62,6 @@ const FooterCtaWrapper = styled.div`
 `;
 
 const EmailCtaWrapper = styled(CtaItalic)`
-  font-size: 20px;
   font-weight: ${fontWeights.light};
 `;
 

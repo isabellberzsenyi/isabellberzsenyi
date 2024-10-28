@@ -4,7 +4,7 @@ export const breakpointsObj = {
   tabletSm: 500,
   tablet: 768,
   tabletLg: 1024,
-  desktop: 1279,
+  desktop: 1224,
   desktopLg: 1440,
   desktopXl: 1600,
 };
@@ -15,7 +15,7 @@ const breakpoints = [
   ['tabletSm', 500],
   ['tablet', 768],
   ['tabletLg', 1024],
-  ['desktop', 1279],
+  ['desktop', 1224],
   ['desktopLg', 1440],
   ['desktopXl', 1600],
 ];

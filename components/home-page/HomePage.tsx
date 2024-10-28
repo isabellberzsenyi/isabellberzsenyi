@@ -61,25 +61,18 @@ export default function HomePage({ navigationData, homePageData, sharedData, cas
       if (fontSize > targetFontSize) {
         document.body.style.overflowY = 'hidden';
         document.body.style.position = 'fixed';
-        if (decrementAmount > 1) {
-          decrementAmount -= 0.1;
-        }
     
         setFontSize(fontSize - decrementAmount);
       } else {
         clearInterval(timer);
-        
+          document.body.style.overflowY = 'auto';
+          document.body.style.position = 'relative';
         setTimeout(() => {
           setLogoOpacity(0);
         }, 1500);
     
         setTimeout(() => {
-          document.body.style.overflowY = 'auto';
-          document.body.style.position = 'relative';
-      
-          setTimeout(() => {
-            setShowContent(true);
-          }, 1500);
+          setShowContent(true);
         }, 1800);
       }
     }, 10);
@@ -95,9 +88,7 @@ export default function HomePage({ navigationData, homePageData, sharedData, cas
     <div style={{ minHeight: '100vh', overflow: 'hidden',  top: 0, left: 0}}>
       {!showContent && (
         <AnimatedLogo $fontSize={fontSize} $opacity={logoOpacity} >
-          <div>
             Izzy <br /> Berzsenyi
-          </div>
         </AnimatedLogo>
       )}
       <MainContent $opacity={showContent ? 1 : 0}>

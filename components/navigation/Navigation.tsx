@@ -26,9 +26,9 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
         <StyledLink href={'/'}>{homeLinkText}</StyledLink>
       </NavigationH3>
       <NavigationLinkWrapper>
-        { navigationLinks.map((link) => (
+        { navigationLinks.map((link, idx) => (
           <NavigationLink 
-            key={link.link_label || ''}
+            key={idx.toString()}
             linkUrl={`/${link.link_url}`}
             linkText={link.link_label || ''}
           />
