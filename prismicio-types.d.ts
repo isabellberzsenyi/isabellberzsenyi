@@ -614,6 +614,17 @@ interface NavigationDocumentData {
   navigation_link: prismic.GroupField<
     Simplify<NavigationDocumentDataNavigationLinkItem>
   >;
+
+  /**
+   * Resume PDF field in *Navigation*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.resume_pdf
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  resume_pdf: prismic.LinkToMediaField;
 }
 
 /**
