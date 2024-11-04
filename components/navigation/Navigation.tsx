@@ -22,7 +22,7 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
     resume_pdf: resumePdf
   } = navigationData;
 
-  const resumePdfUrl: string = (resumePdf as FilledLinkToMediaField).url; 
+  const resumePdfUrl = resumePdf ? (resumePdf as FilledLinkToMediaField).url : undefined; 
 
   return(
     <NavigationContainer backgroundColor={backgroundColor}>

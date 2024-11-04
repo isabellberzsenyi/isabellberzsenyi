@@ -46,7 +46,7 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
     navigationLinks.find((link) => link.link_label === 'Resume');
 
   const footerNavLinks = navigationLinks.filter((link) => link.link_label !== 'Resume');
-  const resumePdfUrl: string = (resumePdf as FilledLinkToMediaField).url; 
+  const resumePdfUrl = resumePdf ? (resumePdf as FilledLinkToMediaField).url : undefined; 
 
   return (
     <FooterContainer>
