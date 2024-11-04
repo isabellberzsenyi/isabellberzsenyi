@@ -5,7 +5,7 @@ import {
   Simplify 
 } from "@/prismicio-types";
 import { StyledLink } from "@/style/shared.styles";
-import { LinkField } from "@prismicio/client";
+import { FilledLinkToMediaField, LinkField } from "@prismicio/client";
 import { FilledLinkToWebField } from "@prismicio/client";
 import { 
   EmailCtaWrapper, 
@@ -46,6 +46,8 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
     navigationLinks.find((link) => link.link_label === 'Resume');
 
   const footerNavLinks = navigationLinks.filter((link) => link.link_label !== 'Resume');
+  const resumePdfUrl: string = (resumePdf as FilledLinkToMediaField).url; 
+
   return (
     <FooterContainer>
       <FooterLinksWrapper>
@@ -75,10 +77,10 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
             linkText="GitHub"
             target={true}
           />
-          {'url' in resumePdf && resumeLink && (
+          {resumePdfUrl && resumeLink && (
             <NavigationLink 
               key="resume"
-              linkUrl={resumePdf.url}
+              linkUrl={resumePdfUrl}
               linkText={resumeLink.link_label || ''}
               target={true}
             />

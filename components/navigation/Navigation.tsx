@@ -8,6 +8,7 @@ import {
   NavigationLinksContainer 
 } from "./Navigation.styles";
 import NavigationLink from "../navigation-link/NavigationLink";
+import { FilledLinkToMediaField } from "@prismicio/client";
 
 interface NavigationProps {
   navigationData: NavigationDocumentData;
@@ -21,6 +22,8 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
     resume_pdf: resumePdf
   } = navigationData;
 
+  const resumePdfUrl: string = (resumePdf as FilledLinkToMediaField).url; 
+
   return(
     <NavigationContainer backgroundColor={backgroundColor}>
       <NavigationH3>
@@ -29,9 +32,9 @@ export default function Navigation({ navigationData, backgroundColor }: Navigati
       <NavigationLinksContainer>
         { navigationLinks.map((link, idx) => (
           <div key={idx.toString()} style={{ paddingLeft: '2em' }}>
-            {(link.link_label === 'Resume' && 'url' in resumePdf) ? (
+            {(link.link_label === 'Resume' && resumePdfUrl) ? (
               <NavigationLink 
-                  linkUrl={resumePdf.url}
+                  linkUrl={resumePdfUrl}
                   linkText={link.link_label || ''}
                   target={true}
                 />
