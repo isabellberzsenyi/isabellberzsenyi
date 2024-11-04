@@ -59,6 +59,7 @@ export default function AboutSection({
             field={headshot} 
             width={isMobile ? 300 : 400} 
             height={isMobile ? 450 : 540} 
+            alt=""
           />
         </AboutTextImageWrapper>
       </AboutSectionContainer>

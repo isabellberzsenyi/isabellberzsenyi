@@ -47,19 +47,7 @@ export default function AboutPage({ aboutPageData, sharedData }: AboutPageProps)
   const isMobile = useMatchMedia(`(max-width: ${breakpointsObj.mobileLg}px)`);
   const isTablet = useMatchMedia(`(max-width: ${breakpointsObj.tablet}px)`);
   const smallHeadshot = useMatchMedia(`(max-width: ${breakpointsObj.tabletLg}px)`);
-
-  const headshotWidth = () => {
-    if (isMobile) return 300;
-    if (isTablet) return 325;
-    return 400;
-  }
-
-  const headshotHeight= () => {
-    if (isMobile) return 405;
-    if (isTablet) return 440;
-    return 540;
-  }
-
+  
   return (
     <>
       <AboutSectionContainer>  
