@@ -35,16 +35,17 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
       return (link as FilledLinkToWebField).url;
     }
     return '#';
-  }
+  };
 
   const {
-    home_link_text: homeLinkText,
-    navigation_link: navigationLinks
+    navigation_link: navigationLinks,
+    resume_pdf: resumePdf,
   } = navigationData;
 
   const resumeLink: Simplify<NavigationDocumentDataNavigationLinkItem> | undefined = 
     navigationLinks.find((link) => link.link_label === 'Resume');
 
+  const footerNavLinks = navigationLinks.filter((link) => link.link_label !== 'Resume');
   return (
     <FooterContainer>
       <FooterLinksWrapper>
@@ -52,35 +53,34 @@ export default function Footer({ footerData, navigationData }: FooterProps) {
           <P>
             <StyledLink href={'/'}>Home</StyledLink>
           </P>
-          { navigationLinks.map((link) => (
+          { footerNavLinks.map((link, idx) => (
             <NavigationLink
-              key={link.link_label || ''}
+              key={idx.toString()}
               linkUrl={`/${link.link_url}`}
               linkText={link.link_label || ''}
             />
           ))}
-          { resumeLink && (
-            <NavigationLink
-              linkUrl={`/${resumeLink.link_url}`}
-              linkText={resumeLink.link_label || ''}
-            />
-          )}
+          
         </div>
         <div>
           <NavigationLink
+            key="linkedin"
             linkUrl={getUrl(linkedinLink)}
             linkText="LinkedIn"
             target={true}
           />
           <NavigationLink
+            key="github"
             linkUrl={getUrl(githubLink)}
             linkText="GitHub"
             target={true}
           />
-          { resumeLink && (
-            <NavigationLink
-              linkUrl={`/${resumeLink.link_url}`}
+          {'url' in resumePdf && resumeLink && (
+            <NavigationLink 
+              key="resume"
+              linkUrl={resumePdf.url}
               linkText={resumeLink.link_label || ''}
+              target={true}
             />
           )}
         </div>

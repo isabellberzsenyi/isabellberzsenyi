@@ -21,7 +21,7 @@ const NavigationH3 = styled(H3)`
   line-height: 33px;
 `;
 
-const NavigationLinkWrapper = styled.div`
+const NavigationLinksContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   justify-items: flex-end;
@@ -31,5 +31,5 @@ const NavigationLinkWrapper = styled.div`
 export {
   NavigationContainer,
   NavigationH3,
-  NavigationLinkWrapper
+  NavigationLinksContainer
   };

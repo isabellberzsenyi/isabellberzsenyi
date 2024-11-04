@@ -35,6 +35,15 @@
             }
           }
         }
+      },
+      "resume_pdf": {
+        "type": "Link",
+        "config": {
+          "label": "Resume PDF",
+          "placeholder": "",
+          "select": "media",
+          "allowText": true
+        }
       }
     }
   }
